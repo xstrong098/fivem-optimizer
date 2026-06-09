@@ -3,21 +3,16 @@
     =========================================
     Scarica e installa l'optimizer su qualsiasi PC con un solo comando.
 
-    UTILIZZO (incolla in PowerShell, anche non admin):
+    UTILIZZO - incolla in PowerShell (anche non admin):
     -------------------------------------------------------
-    irm https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/bootstrap.ps1 | iex
+    irm https://raw.githubusercontent.com/xstrong098/fivem-optimizer/main/bootstrap.ps1 | iex
 
     Oppure dalla finestra Esegui (Win+R):
-        powershell -ep bypass -c "irm 'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/bootstrap.ps1' | iex"
-
-    PRIMA DI PUBBLICARE SU GITHUB:
-        Sostituisci YOUR_USERNAME e YOUR_REPO con i tuoi dati GitHub nella variabile $repoRaw qui sotto.
+        powershell -ep bypass -c "irm 'https://raw.githubusercontent.com/xstrong098/fivem-optimizer/main/bootstrap.ps1' | iex"
 #>
 
-# ── CONFIGURA QUI LA TUA REPOSITORY GITHUB ───────────────────────────────────
 $repoRaw    = "https://raw.githubusercontent.com/xstrong098/fivem-optimizer/main"
 $installDir = "$env:LOCALAPPDATA\FiveM-Optimizer"
-# ─────────────────────────────────────────────────────────────────────────────
 
 $ErrorActionPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -28,29 +23,55 @@ Write-Host "   FiveM Performance Optimizer - Bootstrap" -ForegroundColor Cyan
 Write-Host "  ================================================" -ForegroundColor Cyan
 Write-Host ""
 
-# ── Auto-elevazione UAC ───────────────────────────────────────────────────────
-$isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole('Administrator')
+# ── Auto-elevazione UAC con guard anti-loop ───────────────────────────────────
+$isAdmin   = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+$loopFlag  = "$env:TEMP\.fom_elev_attempt"
+
 if (-not $isAdmin) {
-    Write-Host "  [!] Richiedo privilegi amministratore..." -ForegroundColor Yellow
+    if (Test-Path $loopFlag) {
+        # Secondo lancio senza admin = UAC rifiutato o terminale non compatibile
+        Remove-Item $loopFlag -Force -EA SilentlyContinue
+        Write-Host "  [X] Permessi amministratore non ottenuti." -ForegroundColor Red
+        Write-Host ""
+        Write-Host "  Soluzione: apri PowerShell come Amministratore (tasto destro)" -ForegroundColor Yellow
+        Write-Host "  e incolla questo comando:" -ForegroundColor Yellow
+        Write-Host ""
+        Write-Host "  irm https://raw.githubusercontent.com/xstrong098/fivem-optimizer/main/bootstrap.ps1 | iex" -ForegroundColor Cyan
+        Write-Host ""
+        Write-Host "  Premi INVIO per chiudere."
+        $null = $Host.UI.ReadLine()
+        exit 1
+    }
+
+    # Primo tentativo: salva flag, scarica in temp e rilancia come admin
+    New-Item $loopFlag -ItemType File -Force -EA SilentlyContinue | Out-Null
+    Write-Host "  [!] Richiedo privilegi amministratore (UAC)..." -ForegroundColor Yellow
+
     $tmp = "$env:TEMP\fom-bootstrap.ps1"
     try {
         Invoke-WebRequest "$repoRaw/bootstrap.ps1" -OutFile $tmp -UseBasicParsing -EA Stop
-        Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$tmp`"" -Verb RunAs
     } catch {
-        # Fallback: se eseguito come file locale rilanciamo quello
-        $self = if ($MyInvocation.MyCommand.Path) { $MyInvocation.MyCommand.Path } else { $null }
-        if ($self -and (Test-Path $self)) {
-            Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$self`"" -Verb RunAs
+        if ($MyInvocation.MyCommand.Path -and (Test-Path $MyInvocation.MyCommand.Path)) {
+            $tmp = $MyInvocation.MyCommand.Path
         } else {
-            Write-Host "  [X] Impossibile auto-elevarsi. Riapri PowerShell come Amministratore e riesegui." -ForegroundColor Red
-            Write-Host "      Premi INVIO per uscire."
+            Remove-Item $loopFlag -Force -EA SilentlyContinue
+            Write-Host "  [X] Impossibile scaricare bootstrap. Controlla la connessione." -ForegroundColor Red
+            Write-Host "  Premi INVIO per chiudere."
             $null = $Host.UI.ReadLine()
+            exit 1
         }
     }
+
+    Start-Process powershell.exe -ArgumentList @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $tmp
+    ) -Verb RunAs
     exit
 }
 
-# ── Lista completa dei file da scaricare ──────────────────────────────────────
+# Admin confermato: rimuovi il flag se rimasto (elevazione riuscita)
+Remove-Item $loopFlag -Force -EA SilentlyContinue
+
+# ── Lista file da scaricare ───────────────────────────────────────────────────
 $files = @(
     "FiveM-Optimizer.ps1",
     "AVVIA-COME-ADMIN.bat",
@@ -72,26 +93,27 @@ $files = @(
 
 # ── Controlla installazione esistente ─────────────────────────────────────────
 $alreadyInstalled = Test-Path "$installDir\FiveM-Optimizer.ps1"
-
 if ($alreadyInstalled) {
     Add-Type -AssemblyName PresentationFramework -EA SilentlyContinue
-    $msg = "FiveM Optimizer e' gia' installato in:`n$installDir`n`nVuoi scaricare l'ultima versione da GitHub?"
-    $r = [System.Windows.MessageBox]::Show($msg, "FiveM Optimizer", "YesNo", "Question")
+    $r = [System.Windows.MessageBox]::Show(
+        "FiveM Optimizer e' gia' installato in:`n$installDir`n`nVuoi scaricare l'ultima versione da GitHub?",
+        "FiveM Optimizer", "YesNo", "Question")
     if ($r -eq 'No') {
         Write-Host "  Avvio versione installata..." -ForegroundColor Green
-        Write-Host ""
-        Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$installDir\FiveM-Optimizer.ps1`"" -Verb RunAs
+        Start-Process powershell.exe -ArgumentList @(
+            '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', "$installDir\FiveM-Optimizer.ps1"
+        )
         exit
     }
 }
 
-# ── Download files ────────────────────────────────────────────────────────────
-Write-Host "  Cartella installazione: $installDir" -ForegroundColor DarkGray
+# ── Download ──────────────────────────────────────────────────────────────────
+Write-Host "  Destinazione: $installDir" -ForegroundColor DarkGray
 Write-Host ""
 
-$total   = $files.Count
-$i       = 0
-$errors  = 0
+$total  = $files.Count
+$i      = 0
+$errors = 0
 
 foreach ($f in $files) {
     $i++
@@ -99,34 +121,32 @@ foreach ($f in $files) {
     $localDir  = Split-Path $localPath -Parent
     New-Item -ItemType Directory -Path $localDir -Force -EA SilentlyContinue | Out-Null
 
-    $url = "$repoRaw/$f"
-    $pct = [math]::Round(($i / $total) * 100)
     Write-Host "  [$($i.ToString().PadLeft(2))/$total] $f" -ForegroundColor DarkGray -NoNewline
-
     try {
-        Invoke-WebRequest -Uri $url -OutFile $localPath -UseBasicParsing -EA Stop
+        Invoke-WebRequest -Uri "$repoRaw/$f" -OutFile $localPath -UseBasicParsing -EA Stop
         Write-Host " OK" -ForegroundColor Green
     } catch {
-        Write-Host " ERRORE" -ForegroundColor Red
-        Write-Host "         URL: $url" -ForegroundColor DarkRed
-        Write-Host "         $_" -ForegroundColor DarkRed
+        Write-Host " ERRORE: $_" -ForegroundColor Red
         $errors++
     }
 }
 
 Write-Host ""
-
 if ($errors -gt 0) {
-    Write-Host "  [!] $errors file non scaricati. Controlla la connessione o l'URL della repository." -ForegroundColor Yellow
+    Write-Host "  [!] $errors file non scaricati. Controlla la connessione o la repository." -ForegroundColor Yellow
     Write-Host ""
 }
 
+# ── Avvia optimizer ───────────────────────────────────────────────────────────
 if (Test-Path "$installDir\FiveM-Optimizer.ps1") {
-    Write-Host "  [+] Download completato. Avvio optimizer..." -ForegroundColor Green
+    Write-Host "  [+] Installazione completata. Avvio optimizer..." -ForegroundColor Green
     Write-Host ""
-    Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$installDir\FiveM-Optimizer.ps1`"" -Verb RunAs
+    # Lancia senza -Verb RunAs: siamo gia' admin, il processo figlio eredita il token
+    Start-Process powershell.exe -ArgumentList @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', "$installDir\FiveM-Optimizer.ps1"
+    )
 } else {
     Write-Host "  [X] FiveM-Optimizer.ps1 non trovato. Installazione fallita." -ForegroundColor Red
-    Write-Host "      Premi INVIO per uscire."
+    Write-Host "  Premi INVIO per chiudere."
     $null = $Host.UI.ReadLine()
 }
