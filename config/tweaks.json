@@ -1,0 +1,1005 @@
+{
+  "KillOneDrive":        { "Content": "OneDrive",                "Description": "Microsoft OneDrive",                   "category": "Processi", "Order": "a01", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'OneDrive'           -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'OneDrive terminato' 'OK'"],          "UndoScript": ["Write-FOMLog 'Riavvia OneDrive manualmente se necessario' 'INFO'"] },
+  "KillTeams":           { "Content": "Microsoft Teams",         "Description": "Microsoft Teams",                      "category": "Processi", "Order": "a02", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'Teams'              -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Teams terminato' 'OK'"],             "UndoScript": ["Write-FOMLog 'Riavvia Teams manualmente se necessario' 'INFO'"] },
+  "KillSlack":           { "Content": "Slack",                   "Description": "Slack",                                "category": "Processi", "Order": "a03", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'Slack'              -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Slack terminato' 'OK'"],             "UndoScript": ["Write-FOMLog 'Riavvia Slack manualmente se necessario' 'INFO'"] },
+  "KillDiscord":         { "Content": "Discord",                 "Description": "Discord (overlay attivo)",             "category": "Processi", "Order": "a04", "Checked": false, "safe": false, "InvokeScript": ["Get-Process -Name 'Discord'            -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Discord terminato' 'OK'"],           "UndoScript": ["Write-FOMLog 'Riavvia Discord manualmente se necessario' 'INFO'"] },
+  "KillSpotify":         { "Content": "Spotify",                 "Description": "Spotify",                              "category": "Processi", "Order": "a05", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'Spotify'            -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Spotify terminato' 'OK'"],           "UndoScript": ["Write-FOMLog 'Riavvia Spotify manualmente se necessario' 'INFO'"] },
+  "KillChrome":          { "Content": "Google Chrome",           "Description": "Google Chrome",                        "category": "Processi", "Order": "a06", "Checked": false, "safe": false, "InvokeScript": ["Get-Process -Name 'chrome'             -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Chrome terminato' 'OK'"],             "UndoScript": ["Write-FOMLog 'Riavvia Chrome manualmente se necessario' 'INFO'"] },
+  "KillEdge":            { "Content": "Microsoft Edge",          "Description": "Microsoft Edge",                       "category": "Processi", "Order": "a07", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'msedge'             -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Edge terminato' 'OK'"],              "UndoScript": ["Write-FOMLog 'Riavvia Edge manualmente se necessario' 'INFO'"] },
+  "KillFirefox":         { "Content": "Firefox",                 "Description": "Firefox",                              "category": "Processi", "Order": "a08", "Checked": false, "safe": false, "InvokeScript": ["Get-Process -Name 'firefox'            -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Firefox terminato' 'OK'"],           "UndoScript": ["Write-FOMLog 'Riavvia Firefox manualmente se necessario' 'INFO'"] },
+  "KillEpic":            { "Content": "Epic Games Launcher",     "Description": "Epic Games Launcher",                  "category": "Processi", "Order": "a09", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'EpicGamesLauncher'  -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Epic terminato' 'OK'"],             "UndoScript": ["Write-FOMLog 'Riavvia Epic manualmente se necessario' 'INFO'"] },
+  "KillSteam":           { "Content": "Steam",                   "Description": "Steam",                                "category": "Processi", "Order": "a10", "Checked": false, "safe": false, "InvokeScript": ["Get-Process -Name 'Steam'              -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Steam terminato' 'OK'"],             "UndoScript": ["Write-FOMLog 'Riavvia Steam manualmente se necessario' 'INFO'"] },
+  "KillNvShadow":        { "Content": "Nvidia ShadowPlay",       "Description": "Nvidia ShadowPlay / Share",            "category": "Processi", "Order": "a11", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'NVIDIA Share'        -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'NvShadow terminato' 'OK'"],        "UndoScript": ["Write-FOMLog 'Riavvia NvShadow manualmente se necessario' 'INFO'"] },
+  "KillNvContainer":     { "Content": "Nvidia Container",        "Description": "Nvidia Container (overlay GPU)",       "category": "Processi", "Order": "a12", "Checked": false, "safe": false, "InvokeScript": ["Get-Process -Name 'nvcontainer'         -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'NvContainer terminato' 'OK'"],      "UndoScript": ["Write-FOMLog 'Riavvia NvContainer manualmente se necessario' 'INFO'"] },
+  "KillAdobe":           { "Content": "Adobe Updater",           "Description": "Adobe Update Service",                 "category": "Processi", "Order": "a13", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'AdobeUpdateService' -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Adobe Updater terminato' 'OK'"],    "UndoScript": ["Write-FOMLog 'Riavvia Adobe Updater manualmente se necessario' 'INFO'"] },
+  "KillCortana":         { "Content": "Cortana",                 "Description": "Cortana",                              "category": "Processi", "Order": "a14", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'Cortana'             -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Cortana terminato' 'OK'"],           "UndoScript": ["Write-FOMLog 'Riavvia Cortana manualmente se necessario' 'INFO'"] },
+  "KillGameBar":         { "Content": "Xbox Game Bar",           "Description": "Xbox Game Bar (overlay)",              "category": "Processi", "Order": "a15", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'GameBarPresenceWriter' -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'GameBar terminato' 'OK'"],      "UndoScript": ["Write-FOMLog 'Riavvia GameBar manualmente se necessario' 'INFO'"] },
+  "KillDropbox":         { "Content": "Dropbox",                 "Description": "Dropbox",                              "category": "Processi", "Order": "a16", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'DropboxClient'       -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Dropbox terminato' 'OK'"],          "UndoScript": ["Write-FOMLog 'Riavvia Dropbox manualmente se necessario' 'INFO'"] },
+  "KillGDrive":          { "Content": "Google Drive",            "Description": "Google Drive File Stream",             "category": "Processi", "Order": "a17", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'GoogleDriveFS'       -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Google Drive terminato' 'OK'"],     "UndoScript": ["Write-FOMLog 'Riavvia Google Drive manualmente se necessario' 'INFO'"] },
+
+  "InputKeyboard": {
+    "Content": "Ottimizzazione Tastiera",
+    "Description": "Delay=0 (250ms), Speed=31. Driver kbdclass buffer ridotto. i8042prt PollStatusIterations=1. Sticky/Filter/Toggle Keys OFF.",
+    "category": "Input", "Order": "b01", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Control Panel\\Keyboard",                                        "Name": "KeyboardDelay",             "Value": "0",   "OriginalValue": "1",    "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Keyboard",                                        "Name": "KeyboardSpeed",             "Value": "31",  "OriginalValue": "31",   "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Keyboard",                                        "Name": "InitialKeyboardIndicators", "Value": "0",   "OriginalValue": "2",    "Type": "String" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\kbdclass\\Parameters",      "Name": "KeyboardDataQueueSize",     "Value": "32",  "OriginalValue": "150",  "Type": "DWord"  },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\kbdclass\\Parameters",      "Name": "ConnectMultiplePorts",      "Value": "0",   "OriginalValue": "1",    "Type": "DWord"  },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\i8042prt\\Parameters",      "Name": "PollStatusIterations",      "Value": "1",   "OriginalValue": "10",   "Type": "DWord"  },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\i8042prt\\Parameters",      "Name": "OverrideKeyboardType",      "Value": "7",   "OriginalValue": "4",    "Type": "DWord"  },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\i8042prt\\Parameters",      "Name": "OverrideKeyboardSubtype",   "Value": "0",   "OriginalValue": "0",    "Type": "DWord"  },
+      { "Path": "HKCU:\\Control Panel\\Accessibility\\StickyKeys",                       "Name": "Flags",                     "Value": "506", "OriginalValue": "510",  "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Accessibility\\ToggleKeys",                       "Name": "Flags",                     "Value": "58",  "OriginalValue": "62",   "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Accessibility\\Keyboard Response",                "Name": "Flags",                     "Value": "122", "OriginalValue": "126",  "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Accessibility\\Keyboard Response",                "Name": "AutoRepeatDelay",           "Value": "0",   "OriginalValue": "1000", "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Accessibility\\Keyboard Response",                "Name": "AutoRepeatRate",            "Value": "0",   "OriginalValue": "500",  "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Accessibility\\Keyboard Response",                "Name": "BounceTime",                "Value": "0",   "OriginalValue": "0",    "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Accessibility\\Keyboard Response",                "Name": "DelayBeforeAcceptance",     "Value": "0",   "OriginalValue": "1000", "Type": "String" }
+    ]
+  },
+
+  "InputMouse": {
+    "Content": "Ottimizzazione Mouse",
+    "Description": "Accelerazione OFF. Curva 1:1 lineare (nessun smoothing Windows). Driver mouclass + mouhid buffer ridotto.",
+    "category": "Input", "Order": "b02", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Control Panel\\Mouse", "Name": "MouseSpeed",      "Value": "0",  "OriginalValue": "1",  "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Mouse", "Name": "MouseThreshold1", "Value": "0",  "OriginalValue": "6",  "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Mouse", "Name": "MouseThreshold2", "Value": "0",  "OriginalValue": "10", "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Mouse", "Name": "MouseSensitivity", "Value": "10", "OriginalValue": "10", "Type": "String" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\mouclass\\Parameters", "Name": "MouseDataQueueSize", "Value": "32", "OriginalValue": "100", "Type": "DWord" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\mouhid\\Parameters",   "Name": "MouseDataQueueSize", "Value": "32", "OriginalValue": "100", "Type": "DWord" }
+    ],
+    "InvokeScript": [
+      "$cx=[byte[]](0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xC0,0xCC,0x0C,0x00,0x00,0x00,0x00,0x00,0x80,0x99,0x19,0x00,0x00,0x00,0x00,0x00,0x40,0x66,0x26,0x00,0x00,0x00,0x00,0x00,0x00,0x33,0x33,0x00,0x00,0x00,0x00,0x00); $cy=[byte[]](0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x38,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x70,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xA8,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0xE0,0x00,0x00,0x00,0x00,0x00); Set-ItemProperty 'HKCU:\\Control Panel\\Mouse' -Name 'SmoothMouseXCurve' -Value $cx -Type Binary -Force; Set-ItemProperty 'HKCU:\\Control Panel\\Mouse' -Name 'SmoothMouseYCurve' -Value $cy -Type Binary -Force; Write-FOMLog 'Curva 1:1 applicata' 'OK'"
+    ],
+    "UndoScript": [
+      "Remove-ItemProperty 'HKCU:\\Control Panel\\Mouse' -Name 'SmoothMouseXCurve' -ErrorAction SilentlyContinue; Remove-ItemProperty 'HKCU:\\Control Panel\\Mouse' -Name 'SmoothMouseYCurve' -ErrorAction SilentlyContinue; Write-FOMLog 'Curve mouse rimosse (Windows usera curva default)' 'OK'"
+    ]
+  },
+
+  "InputUSBHID": {
+    "Content": "USB / HID Globale",
+    "Description": "Selective Suspend OFF. Power management OFF su tutti i dispositivi USB. IRQ 8 e 12 prioritizzati. HidUsb configurato.",
+    "category": "Input", "Order": "b03", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\USB",                          "Name": "DisableSelectiveSuspend", "Value": "1", "OriginalValue": "0", "Type": "DWord" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\PriorityControl",               "Name": "IRQ8Priority",            "Value": "1", "OriginalValue": "0", "Type": "DWord" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\PriorityControl",               "Name": "IRQ12Priority",           "Value": "1", "OriginalValue": "0", "Type": "DWord" }
+    ],
+    "InvokeScript": [
+      "powercfg /SETACVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0 2>$null; powercfg /SETDCVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; $devs = Get-PnpDevice -Class 'USB' -Status 'OK' -ErrorAction SilentlyContinue; $c=0; foreach ($d in $devs) { $rp = 'HKLM:\\SYSTEM\\CurrentControlSet\\Enum\\' + $d.InstanceId + '\\Device Parameters'; if (Test-Path $rp) { Set-ItemProperty $rp -Name 'EnhancedPowerManagementEnabled' -Value 0 -Type DWord -ErrorAction SilentlyContinue; $c++ } }; Write-FOMLog \"USB power management disabilitato su $c dispositivi\" 'OK'"
+    ],
+    "UndoScript": [
+      "powercfg /SETACVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 1 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; Write-FOMLog 'USB Selective Suspend ripristinato' 'OK'"
+    ]
+  },
+
+  "InputUSBCpuDirect": {
+    "Content": "CPU Direct USB Analyzer",
+    "Description": "Scarica e lancia cpu-direct-usb: mappa i controller USB per latenza (CHIP 0=diretto CPU best, CHIP 1=via chipset, CHIP 2+=hub). Mostra quale porta usare per mouse/tastiera. Strumento interattivo in nuova finestra.",
+    "category": "Input", "Order": "b04", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$d=\"$($sync.PSScriptRoot)\\tools\\cpudirect\"; $s=\"$d\\cpudirect.ps1\"; if(-not(Test-Path $s)){ Write-FOMLog 'Download cpu-direct-usb da GitHub...' 'INFO'; try{ New-Item -ItemType Directory -Path $d -Force -EA SilentlyContinue|Out-Null; Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/MariusHeier/cpu-direct-usb/main/cpudirect.ps1' -OutFile $s -UseBasicParsing -EA Stop; Write-FOMLog 'cpudirect.ps1 scaricato in tools\\cpudirect\\' 'OK' }catch{ Write-FOMLog \"Errore download: $($_.Exception.Message)\" 'ERROR'; return } }else{ Write-FOMLog 'cpudirect.ps1 gia presente in tools\\cpudirect\\' 'INFO' }; Start-Process powershell.exe -ArgumentList @('-ExecutionPolicy','Bypass','-NoExit','-File',$s) -EA SilentlyContinue; Write-FOMLog 'CPU Direct USB aperto — CHIP 0=porta migliore per mouse/tastiera. Usa il menu interattivo per applicare ottimizzazioni.' 'OK'"
+    ],
+    "UndoScript": [
+      "$d=\"$($sync.PSScriptRoot)\\tools\\cpudirect\"; if(Test-Path $d){ Remove-Item $d -Recurse -Force -EA SilentlyContinue; Write-FOMLog 'cpudirect.ps1 rimosso da tools\\cpudirect\\' 'OK' }else{ Write-FOMLog 'cpudirect non era installato' 'INFO' }"
+    ]
+  },
+
+  "GamingGameMode": {
+    "Content": "Game Mode + MMCSS Gaming",
+    "Description": "AllowAutoGameMode=1. SystemResponsiveness=0, NetworkThrottlingIndex=OFF. GPU Priority=8, CPU Priority=6. Scheduling dedicato.",
+    "category": "Gaming", "Order": "c01", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\GameBar",                                                                          "Name": "AllowAutoGameMode",              "Value": "1",     "OriginalValue": "0",     "Type": "DWord"  },
+      { "Path": "HKCU:\\Software\\Microsoft\\GameBar",                                                                          "Name": "AutoGameModeEnabled",            "Value": "1",     "OriginalValue": "0",     "Type": "DWord"  },
+      { "Path": "HKCU:\\Software\\Microsoft\\GameBar",                                                                          "Name": "ShowStartupPanel",               "Value": "0",     "OriginalValue": "1",     "Type": "DWord"  },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",                            "Name": "SystemResponsiveness",           "Value": "0",     "OriginalValue": "20",    "Type": "DWord"  },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile",                            "Name": "NetworkThrottlingIndex",         "Value": "4294967295", "OriginalValue": "10", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",              "Name": "Affinity",                       "Value": "0",     "OriginalValue": "0",     "Type": "DWord"  },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",              "Name": "Background Only",                "Value": "False", "OriginalValue": "False", "Type": "String" },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",              "Name": "Clock Rate",                     "Value": "10000", "OriginalValue": "10000", "Type": "DWord"  },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",              "Name": "GPU Priority",                   "Value": "8",     "OriginalValue": "2",     "Type": "DWord"  },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",              "Name": "Priority",                       "Value": "6",     "OriginalValue": "2",     "Type": "DWord"  },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",              "Name": "Scheduling Category",            "Value": "High",  "OriginalValue": "Medium","Type": "String" },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games",              "Name": "SFIO Priority",                  "Value": "High",  "OriginalValue": "Normal","Type": "String" }
+    ]
+  },
+
+  "GamingGameBarDVR": {
+    "Content": "Disabilita Game Bar e DVR",
+    "Description": "Rimuove hook DirectX del Game DVR. Elimina overlay e cattura audio in background. Libera CPU e GPU.",
+    "category": "Gaming", "Order": "c02", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR", "Name": "AppCaptureEnabled", "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR", "Name": "GameDVR_Enabled",   "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR",       "Name": "AllowGameDVR",      "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKCU:\\System\\GameConfigStore",                               "Name": "GameDVR_FSEBehaviorMode",               "Value": "2", "OriginalValue": "0", "Type": "DWord" },
+      { "Path": "HKCU:\\System\\GameConfigStore",                               "Name": "GameDVR_HonorUserFSEBehaviorMode",      "Value": "1", "OriginalValue": "0", "Type": "DWord" },
+      { "Path": "HKCU:\\System\\GameConfigStore",                               "Name": "GameDVR_DXGIHonorFSEWindowsCompatible", "Value": "1", "OriginalValue": "0", "Type": "DWord" }
+    ]
+  },
+
+  "GamingIFEO": {
+    "Content": "Priorita FiveM.exe e GTA5.exe",
+    "Description": "CpuPriorityClass=High, IoPriority=High, PagePriority=High tramite IFEO. Permanente, senza Task Manager.",
+    "category": "Gaming", "Order": "c03", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\FiveM.exe\\PerfOptions", "Name": "CpuPriorityClass", "Value": "3", "OriginalValue": "<RemoveEntry>", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\FiveM.exe\\PerfOptions", "Name": "IoPriority",       "Value": "3", "OriginalValue": "<RemoveEntry>", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\FiveM.exe\\PerfOptions", "Name": "PagePriority",     "Value": "5", "OriginalValue": "<RemoveEntry>", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\GTA5.exe\\PerfOptions",  "Name": "CpuPriorityClass", "Value": "3", "OriginalValue": "<RemoveEntry>", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\GTA5.exe\\PerfOptions",  "Name": "IoPriority",       "Value": "3", "OriginalValue": "<RemoveEntry>", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\GTA5.exe\\PerfOptions",  "Name": "PagePriority",     "Value": "5", "OriginalValue": "<RemoveEntry>", "Type": "DWord" }
+    ]
+  },
+
+  "GamingNagle": {
+    "Content": "Disabilita Nagle Algorithm",
+    "Description": "TcpAckFrequency=1 + TCPNoDelay=1 su tutte le interfacce di rete. Ping piu basso, meno jitter su server FiveM.",
+    "category": "Gaming", "Order": "c04", "Checked": true,
+    "InvokeScript": [
+      "$p = 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces'; $n = 0; Get-ChildItem $p -ErrorAction SilentlyContinue | ForEach-Object { Set-ItemProperty $_.PSPath -Name 'TcpAckFrequency' -Value 1 -Type DWord -ErrorAction SilentlyContinue; Set-ItemProperty $_.PSPath -Name 'TCPNoDelay' -Value 1 -Type DWord -ErrorAction SilentlyContinue; $n++ }; Write-FOMLog \"Nagle disabilitato su $n interfacce\" 'OK'"
+    ],
+    "UndoScript": [
+      "$p = 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces'; Get-ChildItem $p -ErrorAction SilentlyContinue | ForEach-Object { Remove-ItemProperty $_.PSPath -Name 'TcpAckFrequency' -ErrorAction SilentlyContinue; Remove-ItemProperty $_.PSPath -Name 'TCPNoDelay' -ErrorAction SilentlyContinue }; Write-FOMLog 'Nagle ripristinato' 'OK'"
+    ]
+  },
+
+  "GamingTimer": {
+    "Content": "Timer Resolution 0.5ms",
+    "Description": "bcdedit: disabledynamictick=yes, useplatformclock=true. Frame time piu stabile. Richiede riavvio.",
+    "category": "Gaming", "Order": "c05", "Checked": true,
+    "InvokeScript": [
+      "bcdedit /set disabledynamictick yes 2>$null | Out-Null; bcdedit /set useplatformclock true 2>$null | Out-Null; bcdedit /set useplatformatick yes 2>$null | Out-Null; Write-FOMLog 'Timer 0.5ms attivato (effetto dopo riavvio)' 'OK'"
+    ],
+    "UndoScript": [
+      "bcdedit /set disabledynamictick no 2>$null | Out-Null; bcdedit /set useplatformclock false 2>$null | Out-Null; bcdedit /deletevalue useplatformatick 2>$null | Out-Null; Write-FOMLog 'Timer resolution ripristinato (effetto dopo riavvio)' 'OK'"
+    ]
+  },
+
+  "GamingVisuals": {
+    "Content": "Effetti Visivi: Prestazioni",
+    "Description": "Disabilita animazioni, trasparenze e ombre Aero. Libera risorse GPU/CPU desktop per il gioco.",
+    "category": "Gaming", "Order": "c06", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects", "Name": "VisualFXSetting", "Value": "2", "OriginalValue": "0", "Type": "DWord" }
+    ]
+  },
+
+  "SistemaCPUMemory": {
+    "Content": "Priorita CPU e Memoria",
+    "Description": "Win32PrioritySeparation=26 (favorisce processi in primo piano). DisablePagingExecutive=1 (kernel in RAM). LargeSystemCache=0.",
+    "category": "Sistema", "Order": "d01", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\PriorityControl",                          "Name": "Win32PrioritySeparation", "Value": "26", "OriginalValue": "2",  "Type": "DWord" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",       "Name": "DisablePagingExecutive",  "Value": "1",  "OriginalValue": "0",  "Type": "DWord" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",       "Name": "LargeSystemCache",        "Value": "0",  "OriginalValue": "0",  "Type": "DWord" }
+    ]
+  },
+
+  "SistemaBackgroundApps": {
+    "Content": "Disabilita App in Background",
+    "Description": "GlobalUserDisabled=1. Impedisce alle app UWP di girare in background durante il gioco.",
+    "category": "Sistema", "Order": "d02", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications", "Name": "GlobalUserDisabled", "Value": "1", "OriginalValue": "0", "Type": "DWord" }
+    ]
+  },
+
+  "SistemaPrivacy": {
+    "Content": "Privacy e Suggerimenti",
+    "Description": "Disabilita consigli, annunci, ricerca web nel menu Start e telemetria inutile. Migliora le prestazioni generali.",
+    "category": "Sistema", "Order": "d03", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "Name": "SubscribedContent-338388Enabled", "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "Name": "SubscribedContent-353694Enabled", "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "Name": "SystemPaneSuggestionsEnabled",    "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "Name": "RotatingLockScreenEnabled",       "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",                 "Name": "BingSearchEnabled",               "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",                 "Name": "CortanaConsent",                  "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "SvcDiagTrack":    { "Content": "Telemetria (DiagTrack)",                   "Description": "Connected User Experiences and Telemetry",  "category": "Servizi", "Order": "e01", "Checked": false, "safe": true,  "service": [{ "Name": "DiagTrack",          "StartupType": "Disabled", "OriginalType": "Automatic" }] },
+  "SvcWSearch":      { "Content": "Windows Search (indicizzazione)",           "Description": "Indicizzazione disco — alto I/O",           "category": "Servizi", "Order": "e02", "Checked": true,  "safe": true,  "service": [{ "Name": "WSearch",             "StartupType": "Disabled", "OriginalType": "Automatic" }] },
+  "SvcSysMain":      { "Content": "SysMain / Superfetch",                      "Description": "Precaricamento app — usa RAM e I/O",        "category": "Servizi", "Order": "e03", "Checked": false, "safe": true,  "service": [{ "Name": "SysMain",             "StartupType": "Disabled", "OriginalType": "Automatic" }] },
+  "SvcMapsBroker":   { "Content": "Downloaded Maps Manager",                   "Description": "Gestione mappe offline",                    "category": "Servizi", "Order": "e04", "Checked": true,  "safe": true,  "service": [{ "Name": "MapsBroker",          "StartupType": "Disabled", "OriginalType": "Automatic" }] },
+  "SvcLfsvc":        { "Content": "Geolocation Service",                       "Description": "Servizio di geolocalizzazione",             "category": "Servizi", "Order": "e05", "Checked": true,  "safe": true,  "service": [{ "Name": "lfsvc",               "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+  "SvcXblAuth":      { "Content": "Xbox Live Auth Manager",                    "Description": "Autenticazione Xbox Live",                  "category": "Servizi", "Order": "e06", "Checked": true,  "safe": true,  "service": [{ "Name": "XblAuthManager",      "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+  "SvcXblGameSave":  { "Content": "Xbox Live Game Save",                       "Description": "Salvataggio cloud Xbox",                    "category": "Servizi", "Order": "e07", "Checked": true,  "safe": true,  "service": [{ "Name": "XblGameSave",         "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+  "SvcXboxNet":      { "Content": "Xbox Live Networking",                      "Description": "Rete Xbox Live",                           "category": "Servizi", "Order": "e08", "Checked": true,  "safe": true,  "service": [{ "Name": "XboxNetApiSvc",       "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+  "SvcWMP":          { "Content": "Windows Media Player Network",              "Description": "Condivisione media in rete",                "category": "Servizi", "Order": "e09", "Checked": true,  "safe": true,  "service": [{ "Name": "WMPNetworkSvc",       "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+  "SvcFax":          { "Content": "Fax",                                       "Description": "Servizio fax Windows",                     "category": "Servizi", "Order": "e10", "Checked": true,  "safe": true,  "service": [{ "Name": "Fax",                 "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+  "SvcRemoteReg":    { "Content": "Remote Registry",                           "Description": "Accesso remoto al registro",               "category": "Servizi", "Order": "e11", "Checked": true,  "safe": true,  "service": [{ "Name": "RemoteRegistry",      "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+  "SvcTabletInput":  { "Content": "Touch Keyboard and Handwriting",            "Description": "Tastiera touch e riconoscimento scrittura", "category": "Servizi", "Order": "e12", "Checked": true,  "safe": true,  "service": [{ "Name": "TabletInputService",  "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+  "SvcRetailDemo":   { "Content": "Retail Demo Service",                       "Description": "Modalita demo negozio",                    "category": "Servizi", "Order": "e13", "Checked": true,  "safe": true,  "service": [{ "Name": "RetailDemo",          "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+  "SvcWer":          { "Content": "Windows Error Reporting",                   "Description": "Segnalazione errori Windows",              "category": "Servizi", "Order": "e14", "Checked": true,  "safe": true,  "service": [{ "Name": "WerSvc",              "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+  "SvcPrintNotify":  { "Content": "Printer Extensions and Notifications",      "Description": "Notifiche stampante",                      "category": "Servizi", "Order": "e15", "Checked": false, "safe": false, "service": [{ "Name": "PrintNotify",         "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+
+  "PowerUltimate": {
+    "Content": "Ultimate Performance Plan",
+    "Description": "Attiva Ultimate Performance e forza CPU al 100%. Nessun park core, nessun throttling. Richiede riavvio per effetto pieno.",
+    "category": "Power", "Order": "f01", "Checked": true,
+    "InvokeScript": [
+      "$e = powercfg /list | Select-String 'Ultimate'; if (-not $e) { powercfg /duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 2>$null | Out-Null; Start-Sleep -Milliseconds 500 }; $guid = $null; foreach ($l in (powercfg /list 2>$null)) { if ($l -match 'Ultimate' -and $l -match '([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})') { $guid = $matches[1]; break } }; if ($guid) { powercfg /setactive $guid 2>$null | Out-Null; Write-FOMLog \"Ultimate Performance attivato: $guid\" 'OK' } else { powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c 2>$null | Out-Null; Write-FOMLog 'High Performance attivato (Ultimate non disponibile)' 'WARN' }; powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR PROCTHROTTLEMIN 100 2>$null; powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR PROCTHROTTLEMAX 100 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null | Out-Null"
+    ],
+    "UndoScript": [
+      "powercfg /setactive 381b4222-f694-41f0-9685-ff5bb260df2e 2>$null | Out-Null; Write-FOMLog 'Power plan ripristinato a Bilanciato' 'OK'"
+    ]
+  },
+
+  "PowerBackup": {
+    "Content": "Backup Registro",
+    "Description": "Esporta le chiavi di registro originali sul Desktop prima di applicare ottimizzazioni. Consigliato eseguirlo per primo.",
+    "category": "Power", "Order": "f02", "Checked": true,
+    "InvokeScript": [
+      "$bp = \"$env:USERPROFILE\\Desktop\\FiveM-Optimizer-Backup\"; if (-not (Test-Path $bp)) { New-Item -ItemType Directory -Path $bp -Force | Out-Null }; $d = Get-Date -Format 'yyyyMMdd_HHmmss'; $keys = @('HKCU\\Control Panel\\Keyboard','HKCU\\Control Panel\\Mouse','HKCU\\Control Panel\\Accessibility','HKLM\\SYSTEM\\CurrentControlSet\\Services\\mouclass','HKLM\\SYSTEM\\CurrentControlSet\\Services\\kbdclass','HKLM\\SYSTEM\\CurrentControlSet\\Services\\i8042prt','HKLM\\SYSTEM\\CurrentControlSet\\Services\\USB','HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile'); foreach ($k in $keys) { $n = $k.Split('\\')[-1]; reg export $k \"$bp\\${d}_$n.reg\" /y 2>$null | Out-Null }; Write-FOMLog \"Backup completato: $bp\" 'OK'; Start-Process explorer.exe -ArgumentList $bp -ErrorAction SilentlyContinue"
+    ],
+    "UndoScript": ["Write-FOMLog 'Per ripristinare: doppio click sui file .reg nella cartella di backup sul Desktop' 'INFO'"]
+  },
+
+  "PowerNvidiaProfile": {
+    "Content": "Esporta Profilo Nvidia Inspector (Custom)",
+    "Description": "Copia config\\profile.nip sul Desktop. Impostazioni: VSync=Off, Adaptive Tear Control, Max Pre-Rendered Frames=1, Power=Max Performance, Threaded Opt=On, FXAA=Off, Triple Buffer=Off, Refresh=Highest, FRL Low Latency=On.",
+    "category": "Power", "Order": "f03", "Checked": true,
+    "InvokeScript": [
+      "$src=\"$($sync.PSScriptRoot)\\config\\profile.nip\"; $dst=\"$env:USERPROFILE\\Desktop\\FiveM-Nvidia-Profile.nip\"; if(Test-Path $src){ Copy-Item $src $dst -Force -EA SilentlyContinue; Write-FOMLog \"Profilo Nvidia copiato sul Desktop: $dst\" 'OK'; Start-Process explorer.exe -ArgumentList ('/select,'+$dst) -EA SilentlyContinue } else { Write-FOMLog 'profile.nip non trovato — verifica che esista config\\profile.nip' 'ERROR' }"
+    ],
+    "UndoScript": ["Remove-Item \"$env:USERPROFILE\\Desktop\\FiveM-Nvidia-Profile.nip\" -Force -EA SilentlyContinue; Write-FOMLog 'Profilo Nvidia rimosso dal Desktop' 'OK'"]
+  },
+
+  "PowerNvidiaInstall": {
+    "Content": "Installa e Avvia NV Inspector + Profilo",
+    "Description": "Scarica nvidiaProfileInspector da GitHub (solo se non presente) in tools\\nvidiaProfileInspector\\, poi lo avvia con il profilo custom gia caricato. Richiede connessione internet solo al primo utilizzo.",
+    "category": "Power", "Order": "f04", "Checked": true,
+    "InvokeScript": [
+      "$toolDir=\"$($sync.PSScriptRoot)\\tools\\nvidiaProfileInspector\"; $exe=\"$toolDir\\nvidiaProfileInspector.exe\"; $prof=\"$($sync.PSScriptRoot)\\config\\profile.nip\"; if(-not(Test-Path $exe)){ Write-FOMLog 'NV Inspector non trovato — avvio download da GitHub...' 'INFO'; try{ $api=Invoke-RestMethod -Uri 'https://api.github.com/repos/Orbmu2k/nvidiaProfileInspector/releases/latest' -UseBasicParsing -EA Stop; $asset=$api.assets|Where-Object{$_.name -like '*.zip'}|Select-Object -First 1; if(-not $asset){throw 'Nessun asset ZIP trovato nei release assets'}; $kb=[math]::Round($asset.size/1KB,0); Write-FOMLog \"Scarico: $($asset.name) ($kb KB)...\" 'INFO'; New-Item -ItemType Directory -Path $toolDir -Force -EA SilentlyContinue|Out-Null; $zip=\"$env:TEMP\\npi_download.zip\"; Invoke-WebRequest -Uri $asset.browser_download_url -OutFile $zip -UseBasicParsing -EA Stop; Expand-Archive -Path $zip -DestinationPath $toolDir -Force -EA Stop; Remove-Item $zip -Force -EA SilentlyContinue; $found=Get-ChildItem $toolDir -Filter 'nvidiaProfileInspector.exe' -Recurse|Select-Object -First 1; if($found){$exe=$found.FullName; Write-FOMLog \"Installato: $exe\" 'OK'}else{throw 'exe non trovato dopo estrazione'} }catch{ Write-FOMLog \"Errore download: $($_.Exception.Message)\" 'ERROR'; return } }else{ Write-FOMLog \"NV Inspector gia presente: $exe\" 'INFO' }; if(Test-Path $exe){ if(Test-Path $prof){ Start-Process $exe -ArgumentList ('\"'+$prof+'\"') -EA SilentlyContinue; Write-FOMLog 'NV Inspector avviato con profilo custom — clicca Apply changes per applicare' 'OK' }else{ Start-Process $exe -EA SilentlyContinue; Write-FOMLog 'NV Inspector avviato (profile.nip non trovato in config\\)' 'WARN' } }else{ Write-FOMLog 'Impossibile avviare NV Inspector' 'ERROR' }"
+    ],
+    "UndoScript": [
+      "$toolDir=\"$($sync.PSScriptRoot)\\tools\\nvidiaProfileInspector\"; Get-Process -Name 'nvidiaProfileInspector' -EA SilentlyContinue|Stop-Process -Force -EA SilentlyContinue; if(Test-Path $toolDir){ Remove-Item $toolDir -Recurse -Force -EA SilentlyContinue; Write-FOMLog 'NV Inspector rimosso da tools\\' 'OK' }else{ Write-FOMLog 'NV Inspector non era installato' 'INFO' }"
+    ]
+  },
+
+  "SistemaTelemetria": {
+    "Content": "Disabilita Telemetria",
+    "Description": "AllowTelemetry=0. Blocca l'invio di dati diagnostici a Microsoft. Disabilita dmwappushservice.",
+    "category": "Sistema", "Order": "d04", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",                           "Name": "AllowTelemetry", "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection",           "Name": "AllowTelemetry", "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ],
+    "service": [
+      { "Name": "dmwappushservice", "StartupType": "Disabled", "OriginalType": "Manual" }
+    ]
+  },
+
+  "SistemaActivityHistory": {
+    "Content": "Disabilita Activity History",
+    "Description": "EnableActivityFeed=0, PublishUserActivities=0, UploadUserActivities=0. Impedisce a Windows di registrare le attivita dell'utente.",
+    "category": "Sistema", "Order": "d05", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "Name": "EnableActivityFeed",    "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "Name": "PublishUserActivities", "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "Name": "UploadUserActivities",  "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "SistemaConsumerFeatures": {
+    "Content": "Disabilita Consumer Features",
+    "Description": "DisableWindowsConsumerFeatures=1. Impedisce l'installazione automatica di app sponsorizzate.",
+    "category": "Sistema", "Order": "d06", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent", "Name": "DisableWindowsConsumerFeatures", "Value": "1", "OriginalValue": "0", "Type": "DWord" }
+    ]
+  },
+
+  "SistemaLocationTracking": {
+    "Content": "Disabilita Location Tracking",
+    "Description": "SensorPermissionState=0. Disabilita il rilevamento della posizione GPS/rete.",
+    "category": "Sistema", "Order": "d07", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Sensor\\Overrides\\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}", "Name": "SensorPermissionState", "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\lfsvc\\Service\\Configuration",                                          "Name": "Status",                "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "SistemaStorageSense": {
+    "Content": "Disabilita Storage Sense",
+    "Description": "Disabilita la pulizia automatica dello spazio disco da parte di Windows.",
+    "category": "Sistema", "Order": "d08", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy", "Name": "01", "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "SistemaCopilot": {
+    "Content": "Disabilita Copilot",
+    "Description": "TurnOffWindowsCopilot=1, ShowCopilotButton=0. Rimuove Copilot dalla Taskbar e disabilita il servizio.",
+    "category": "Sistema", "Order": "d09", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsCopilot",                        "Name": "TurnOffWindowsCopilot", "Value": "1", "OriginalValue": "0", "Type": "DWord" },
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",              "Name": "ShowCopilotButton",     "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "SistemaHibernation": {
+    "Content": "Disabilita Ibernazione",
+    "Description": "powercfg /h off. Libera spazio su disco eliminando hiberfil.sys (dimensione = RAM installata).",
+    "category": "Sistema", "Order": "d10", "Checked": false,
+    "InvokeScript": [
+      "powercfg /h off 2>$null; Write-FOMLog 'Ibernazione disabilitata' 'OK'"
+    ],
+    "UndoScript": [
+      "powercfg /h on 2>$null; Write-FOMLog 'Ibernazione riabilitata' 'OK'"
+    ]
+  },
+
+  "SistemaEndTask": {
+    "Content": "End Task con tasto destro Taskbar",
+    "Description": "TaskbarEndTask=1. Aggiunge la voce Termina processo al menu contestuale della Taskbar.",
+    "category": "Sistema", "Order": "d11", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings", "Name": "TaskbarEndTask", "Value": "1", "OriginalValue": "0", "Type": "DWord" }
+    ]
+  },
+
+  "SistemaTempFiles": {
+    "Content": "Pulisci File Temporanei",
+    "Description": "Elimina i contenuti di %TEMP% e C:\\Windows\\Temp per liberare spazio disco.",
+    "category": "Sistema", "Order": "d12", "Checked": false,
+    "InvokeScript": [
+      "Remove-Item -Path \"$env:TEMP\\*\" -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path 'C:\\Windows\\Temp\\*' -Recurse -Force -ErrorAction SilentlyContinue; Write-FOMLog 'File temporanei rimossi' 'OK'"
+    ],
+    "UndoScript": [
+      "Write-FOMLog 'I file temporanei non possono essere ripristinati' 'INFO'"
+    ]
+  },
+
+  "GamingMPO": {
+    "Content": "Disabilita Multiplane Overlay (MPO)",
+    "Description": "OverlayTestMode=5. Risolve stuttering e frame drops causati da MPO su GPU Nvidia/AMD.",
+    "category": "Gaming", "Order": "c07", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\Dwm", "Name": "OverlayTestMode", "Value": "5", "OriginalValue": "<RemoveEntry>", "Type": "DWord" }
+    ]
+  },
+
+  "GamingIPv6Disable": {
+    "Content": "Disabilita IPv6",
+    "Description": "DisabledComponents=255. Disabilita IPv6 su tutte le interfacce. Riduce overhead DNS/routing.",
+    "category": "Gaming", "Order": "c08", "Checked": false, "safe": false,
+    "registry": [
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters", "Name": "DisabledComponents", "Value": "255", "OriginalValue": "0", "Type": "DWord" }
+    ]
+  },
+
+  "GamingTeredo": {
+    "Content": "Disabilita Teredo",
+    "Description": "netsh interface teredo set state disabled. Rimuove il tunnel IPv6 non necessario.",
+    "category": "Gaming", "Order": "c09", "Checked": true,
+    "InvokeScript": [
+      "netsh interface teredo set state disabled 2>$null | Out-Null; Write-FOMLog 'Teredo disabilitato' 'OK'"
+    ],
+    "UndoScript": [
+      "netsh interface teredo set state default 2>$null | Out-Null; Write-FOMLog 'Teredo ripristinato' 'OK'"
+    ]
+  },
+
+  "GamingDateTimeUTC": {
+    "Content": "Orologio Hardware in UTC",
+    "Description": "RealTimeIsUniversal=1. Utile per dual boot con Linux per evitare sfasamenti di orario.",
+    "category": "Gaming", "Order": "c10", "Checked": false,
+    "registry": [
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation", "Name": "RealTimeIsUniversal", "Value": "1", "OriginalValue": "0", "Type": "DWord" }
+    ]
+  },
+
+  "DebloatWidgets": {
+    "Content": "Rimuovi Widget dalla Taskbar",
+    "Description": "TaskbarDa=0. Rimuove il pulsante Widget (notizie/meteo) dalla Taskbar di Windows 11.",
+    "category": "Debloat", "Order": "g01", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Name": "TaskbarDa", "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "DebloatOneDrive": {
+    "Content": "Disinstalla OneDrive",
+    "Description": "Rimuove completamente Microsoft OneDrive dal sistema. Operazione difficilmente reversibile.",
+    "category": "Debloat", "Order": "g02", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "Stop-Process -Name 'OneDrive' -Force -ErrorAction SilentlyContinue; Start-Sleep -Milliseconds 500; $x86 = \"$env:SystemRoot\\System32\\OneDriveSetup.exe\"; $x64 = \"$env:SystemRoot\\SysWOW64\\OneDriveSetup.exe\"; if (Test-Path $x64) { Start-Process $x64 '/uninstall' -Wait -ErrorAction SilentlyContinue } elseif (Test-Path $x86) { Start-Process $x86 '/uninstall' -Wait -ErrorAction SilentlyContinue }; Remove-Item \"$env:USERPROFILE\\OneDrive\" -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item 'C:\\OneDriveTemp' -Recurse -Force -ErrorAction SilentlyContinue; Write-FOMLog 'OneDrive disinstallato' 'OK'"
+    ],
+    "UndoScript": [
+      "Write-FOMLog 'Reinstalla OneDrive da microsoft.com/en-us/microsoft-365/onedrive/download' 'INFO'"
+    ]
+  },
+
+  "DebloatXbox": {
+    "Content": "Rimuovi App Xbox",
+    "Description": "Rimuove Xbox App, Game Overlay, Identity Provider e Xbox Speech tramite Remove-AppxPackage.",
+    "category": "Debloat", "Order": "g03", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "Get-AppxPackage -AllUsers 'Microsoft.XboxApp' -ErrorAction SilentlyContinue | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue; Get-AppxPackage -AllUsers 'Microsoft.XboxGameOverlay' -ErrorAction SilentlyContinue | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue; Get-AppxPackage -AllUsers 'Microsoft.XboxIdentityProvider' -ErrorAction SilentlyContinue | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue; Get-AppxPackage -AllUsers 'Microsoft.XboxSpeechToTextOverlay' -ErrorAction SilentlyContinue | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue; Get-AppxPackage -AllUsers 'Microsoft.Xbox.TCUI' -ErrorAction SilentlyContinue | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue; Write-FOMLog 'App Xbox rimosse' 'OK'"
+    ],
+    "UndoScript": [
+      "Write-FOMLog 'Reinstalla le app Xbox dal Microsoft Store' 'INFO'"
+    ]
+  },
+
+  "DebloatUnwantedApps": {
+    "Content": "Rimuovi Bloatware",
+    "Description": "Rimuove app preinstallate inutili: Candy Crush, News, Maps, Solitaire, Feedback Hub, Teams, Clipchamp, ecc.",
+    "category": "Debloat", "Order": "g04", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$apps = @('king.com.CandyCrushSaga','king.com.CandyCrushFriends','king.com.FarmHeroesSaga','Microsoft.BingNews','Microsoft.BingWeather','Microsoft.GetHelp','Microsoft.Getstarted','Microsoft.MicrosoftSolitaireCollection','Microsoft.MixedReality.Portal','Microsoft.People','Microsoft.SkypeApp','Microsoft.Todos','Microsoft.WindowsFeedbackHub','Microsoft.WindowsMaps','Microsoft.ZuneMusic','Microsoft.ZuneVideo','MicrosoftTeams','Clipchamp.Clipchamp'); foreach ($a in $apps) { Get-AppxPackage -AllUsers $a -ErrorAction SilentlyContinue | Remove-AppxPackage -AllUsers -ErrorAction SilentlyContinue }; Write-FOMLog 'Bloatware rimosso' 'OK'"
+    ],
+    "UndoScript": [
+      "Write-FOMLog 'Reinstalla le app dal Microsoft Store se necessario' 'INFO'"
+    ]
+  },
+
+  "DebloatEdge": {
+    "Content": "Blocca Avvio Automatico Edge",
+    "Description": "StartupBoostEnabled=0, BackgroundModeEnabled=0. Impedisce a Microsoft Edge di avviarsi in background.",
+    "category": "Debloat", "Order": "g05", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge", "Name": "StartupBoostEnabled",   "Value": "0", "OriginalValue": "<RemoveEntry>", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge", "Name": "BackgroundModeEnabled", "Value": "0", "OriginalValue": "<RemoveEntry>", "Type": "DWord" }
+    ]
+  },
+
+  "DebloatMicrosoftOffice": {
+    "Content": "Rimuovi App Office Microsoft",
+    "Description": "Office Hub, OneNote UWP, Sticky Notes, Whiteboard, Power Automate Desktop. Pacchetti produttivita Microsoft inutili su PC gaming. Reinstallabili dal Microsoft Store.",
+    "category": "Debloat", "Order": "g06", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$apps=@('Microsoft.MicrosoftOfficeHub','Microsoft.Office.OneNote','Microsoft.MicrosoftStickyNotes','Microsoft.Whiteboard','Microsoft.PowerAutomateDesktop'); foreach($a in $apps){ Get-AppxPackage -AllUsers $a -EA SilentlyContinue | Remove-AppxPackage -AllUsers -EA SilentlyContinue; Get-AppxProvisionedPackage -Online -EA SilentlyContinue | Where-Object {$_.DisplayName -like $a} | Remove-AppxProvisionedPackage -Online -EA SilentlyContinue }; Write-FOMLog 'App Office Microsoft rimosse' 'OK'"
+    ],
+    "UndoScript": ["Write-FOMLog 'Reinstalla le app dal Microsoft Store' 'INFO'"]
+  },
+
+  "DebloatMicrosoftMedia": {
+    "Content": "Rimuovi App Media Microsoft",
+    "Description": "Foto, Visualizzatore 3D, Registratore audio, Fotocamera, Sveglie. NOTA: rimuove il visualizzatore foto integrato. Installa un alternativo (IrfanView, XnView, ecc.).",
+    "category": "Debloat", "Order": "g07", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$apps=@('Microsoft.Windows.Photos','Microsoft.Microsoft3DViewer','Microsoft.WindowsSoundRecorder','Microsoft.WindowsCamera','Microsoft.WindowsAlarms'); foreach($a in $apps){ Get-AppxPackage -AllUsers $a -EA SilentlyContinue | Remove-AppxPackage -AllUsers -EA SilentlyContinue; Get-AppxProvisionedPackage -Online -EA SilentlyContinue | Where-Object {$_.DisplayName -like $a} | Remove-AppxProvisionedPackage -Online -EA SilentlyContinue }; Write-FOMLog 'App Media Microsoft rimosse' 'OK'"
+    ],
+    "UndoScript": ["Write-FOMLog 'Reinstalla le app dal Microsoft Store' 'INFO'"]
+  },
+
+  "DebloatMicrosoftComm": {
+    "Content": "Rimuovi App Comunicazione Microsoft",
+    "Description": "Posta e Calendario, Phone Link, Your Phone, Skype. Rimuove il client email integrato: usa Outlook.com via browser oppure un client di terze parti (Thunderbird, ecc.).",
+    "category": "Debloat", "Order": "g08", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$apps=@('microsoft.windowscommunicationsapps','Microsoft.YourPhone','MicrosoftCorporationII.PhoneLinkforWindows','Microsoft.SkypeApp'); foreach($a in $apps){ Get-AppxPackage -AllUsers $a -EA SilentlyContinue | Remove-AppxPackage -AllUsers -EA SilentlyContinue; Get-AppxProvisionedPackage -Online -EA SilentlyContinue | Where-Object {$_.DisplayName -like $a} | Remove-AppxProvisionedPackage -Online -EA SilentlyContinue }; Write-FOMLog 'App Comunicazione Microsoft rimosse' 'OK'"
+    ],
+    "UndoScript": ["Write-FOMLog 'Reinstalla le app dal Microsoft Store' 'INFO'"]
+  },
+
+  "DebloatMicrosoftSystem": {
+    "Content": "Rimuovi App Sistema Microsoft",
+    "Description": "Assistenza rapida, Cortana UWP, 3D Builder, Stampa 3D, Feedback Hub, Suggerimenti. App sistema Microsoft inutilizzate che consumano RAM e disco.",
+    "category": "Debloat", "Order": "g09", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$apps=@('MicrosoftCorporationII.QuickAssist','Microsoft.549981C3F5F10','Microsoft.Cortana','Microsoft.3DBuilder','Microsoft.Print3D','Microsoft.WindowsFeedbackHub','Microsoft.Getstarted','Microsoft.GetHelp'); foreach($a in $apps){ Get-AppxPackage -AllUsers $a -EA SilentlyContinue | Remove-AppxPackage -AllUsers -EA SilentlyContinue; Get-AppxProvisionedPackage -Online -EA SilentlyContinue | Where-Object {$_.DisplayName -like $a} | Remove-AppxProvisionedPackage -Online -EA SilentlyContinue }; Write-FOMLog 'App Sistema Microsoft rimosse' 'OK'"
+    ],
+    "UndoScript": ["Write-FOMLog 'Reinstalla le app dal Microsoft Store' 'INFO'"]
+  },
+
+  "DebloatWindowsCapabilities": {
+    "Content": "Rimuovi Funzionalita Windows (DISM)",
+    "Description": "Windows Media Player legacy, XPS Viewer, Registrazione passi, Riconoscimento matematico, Internet Explorer. Rimossi con DISM — piu lento delle AppxPackage, attendi il completamento.",
+    "category": "Debloat", "Order": "g10", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$caps=@('Media.WindowsMediaPlayer','XPS.Viewer','App.StepsRecorder','MathRecognizer','Browser.InternetExplorer'); $c=0; foreach($cap in $caps){ $f=Get-WindowsCapability -Online -EA SilentlyContinue | Where-Object {$_.Name -like ($cap+'*') -and $_.State -eq 'Installed'}; if($f){ $f | Remove-WindowsCapability -Online -EA SilentlyContinue | Out-Null; Write-FOMLog \"Rimosso: $cap\" 'OK'; $c++ } }; Write-FOMLog \"DISM: $c funzionalita rimosse\" 'OK'"
+    ],
+    "UndoScript": [
+      "$caps=@('Media.WindowsMediaPlayer~~~~0.0.12.0','XPS.Viewer~~~~0.0.1.0','App.StepsRecorder~~~~0.0.1.0'); foreach($cap in $caps){ try{ Add-WindowsCapability -Online -Name $cap -EA SilentlyContinue | Out-Null; Write-FOMLog \"Ripristinato: $cap\" 'OK' } catch {} }; Write-FOMLog 'Funzionalita DISM ripristinate' 'OK'"
+    ]
+  },
+
+  "DebloatMicrosoftStore": {
+    "Content": "Rimuovi Microsoft Store [IRREVERSIBILE]",
+    "Description": "ATTENZIONE: rimuove il Microsoft Store. Senza Store non si possono reinstallare le app UWP rimosse con i tweaks precedenti. Esegui SOLO dopo tutti gli altri Debloat. Praticamente irreversibile senza reinstallare Windows.",
+    "category": "Debloat", "Order": "g11", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$apps=@('Microsoft.WindowsStore','Microsoft.StorePurchaseApp','Microsoft.Services.Store.Engagement'); foreach($a in $apps){ Get-AppxPackage -AllUsers $a -EA SilentlyContinue | Remove-AppxPackage -AllUsers -EA SilentlyContinue; Get-AppxProvisionedPackage -Online -EA SilentlyContinue | Where-Object {$_.DisplayName -like $a} | Remove-AppxProvisionedPackage -Online -EA SilentlyContinue }; Write-FOMLog 'Microsoft Store rimosso — non avviare altri tweak Debloat dopo questo' 'WARN'"
+    ],
+    "UndoScript": [
+      "Write-FOMLog 'Ripristino Store: esegui wsreset.exe -i in una shell admin, oppure scarica il pacchetto .msixbundle da store.rg-adguard.net' 'WARN'"
+    ]
+  },
+
+  "PersFileExtensions": {
+    "Content": "Mostra Estensioni File",
+    "Description": "HideFileExt=0. Mostra le estensioni dei file (.exe, .txt, ecc.) in Esplora Risorse.",
+    "category": "Personalizzazione", "Order": "h01", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Name": "HideFileExt", "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "PersHiddenFiles": {
+    "Content": "Mostra File Nascosti",
+    "Description": "Hidden=1. Mostra file e cartelle con attributo nascosto in Esplora Risorse.",
+    "category": "Personalizzazione", "Order": "h02", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Name": "Hidden", "Value": "1", "OriginalValue": "2", "Type": "DWord" }
+    ]
+  },
+
+  "PersTaskbarSearch": {
+    "Content": "Rimuovi Casella Ricerca Taskbar",
+    "Description": "SearchboxTaskbarMode=0. Rimuove la casella di ricerca dalla Taskbar.",
+    "category": "Personalizzazione", "Order": "h03", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search", "Name": "SearchboxTaskbarMode", "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "PersTaskbarTaskView": {
+    "Content": "Rimuovi Pulsante Task View",
+    "Description": "ShowTaskViewButton=0. Rimuove il pulsante Task View (finestre virtuali) dalla Taskbar.",
+    "category": "Personalizzazione", "Order": "h04", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Name": "ShowTaskViewButton", "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "PersRightClickMenu": {
+    "Content": "Menu Tasto Destro Classico (Win10)",
+    "Description": "Ripristina il menu contestuale completo stile Windows 10 su Windows 11 tramite CLSID {86ca1aa0}.",
+    "category": "Personalizzazione", "Order": "h05", "Checked": false,
+    "InvokeScript": [
+      "New-Item -Path 'HKCU:\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32' -Force -ErrorAction SilentlyContinue | Out-Null; Set-ItemProperty -Path 'HKCU:\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32' -Name '(Default)' -Value '' -Type String -ErrorAction SilentlyContinue; Write-FOMLog 'Menu classico attivato - riavvia Explorer' 'OK'; Stop-Process -Name 'explorer' -Force -ErrorAction SilentlyContinue"
+    ],
+    "UndoScript": [
+      "Remove-Item -Path 'HKCU:\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}' -Recurse -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Menu Win11 ripristinato - riavvia Explorer' 'OK'; Stop-Process -Name 'explorer' -Force -ErrorAction SilentlyContinue"
+    ]
+  },
+
+  "PersFileExplorerHome": {
+    "Content": "Esplora Risorse: Apri su Questo PC",
+    "Description": "LaunchTo=1. Imposta Esplora Risorse per aprirsi su Questo PC invece che su Home o Accesso rapido.",
+    "category": "Personalizzazione", "Order": "h06", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Name": "LaunchTo", "Value": "1", "OriginalValue": "2", "Type": "DWord" }
+    ]
+  },
+
+  "PersFileExplorerGallery": {
+    "Content": "Rimuovi Galleria da Esplora Risorse",
+    "Description": "IsPinnedToNameSpaceTree=0. Rimuove la voce Galleria dal pannello laterale di Esplora Risorse.",
+    "category": "Personalizzazione", "Order": "h07", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Classes\\CLSID\\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}", "Name": "System.IsPinnedToNameSpaceTree", "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "PersStartMenuRec": {
+    "Content": "Disabilita Raccomandazioni Start Menu",
+    "Description": "Start_IrisRecommendations=0. Rimuove i suggerimenti di app e file dal menu Start di Windows 11.",
+    "category": "Personalizzazione", "Order": "h08", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "Name": "Start_IrisRecommendations", "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "PersDarkTheme": {
+    "Content": "Tema Scuro",
+    "Description": "AppsUseLightTheme=0, SystemUsesLightTheme=0. Abilita il tema scuro per applicazioni e sistema.",
+    "category": "Personalizzazione", "Order": "h09", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "Name": "AppsUseLightTheme",    "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "Name": "SystemUsesLightTheme", "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "PersNumLock": {
+    "Content": "Num Lock Abilitato all'Avvio",
+    "Description": "InitialKeyboardIndicators=2. Attiva automaticamente Num Lock all'avvio di Windows.",
+    "category": "Personalizzazione", "Order": "h10", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Control Panel\\Keyboard", "Name": "InitialKeyboardIndicators", "Value": "2", "OriginalValue": "0", "Type": "String" }
+    ]
+  },
+
+  "GamingCoreParking": {
+    "Content": "Disabilita Core Parking CPU",
+    "Description": "CpuMinCores=100, CpuMaxCores=100. Forza tutti i core sempre attivi. Elimina la latenza di riattivazione dei core in park.",
+    "category": "Gaming", "Order": "c11", "Checked": true,
+    "InvokeScript": [
+      "powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR CPMINCORES 100 2>$null; powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR CPMAXCORES 100 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; Write-FOMLog 'Core parking disabilitato — tutti i core attivi' 'OK'"
+    ],
+    "UndoScript": [
+      "powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR CPMINCORES 0 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; Write-FOMLog 'Core parking ripristinato' 'OK'"
+    ]
+  },
+
+  "GamingFSO": {
+    "Content": "Disabilita Fullscreen Optimizations",
+    "Description": "DISABLEDXMAXIMIZEDWINDOWEDMODE per FiveM.exe e GTA5.exe. Forza fullscreen DX esclusivo senza hook DWM. Riduce input lag e stuttering.",
+    "category": "Gaming", "Order": "c12", "Checked": true,
+    "InvokeScript": [
+      "$lp='HKCU:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers'; New-Item -Path $lp -Force -ErrorAction SilentlyContinue|Out-Null; $paths=@(\"$env:LOCALAPPDATA\\FiveM\\FiveM.exe\",'C:\\Program Files (x86)\\Steam\\steamapps\\common\\Grand Theft Auto V\\GTA5.exe','C:\\Program Files\\Rockstar Games\\Grand Theft Auto V\\GTA5.exe','C:\\Program Files\\Epic Games\\GTAV\\GTA5.exe'); foreach($p in $paths){Set-ItemProperty $lp -Name $p -Value 'DISABLEDXMAXIMIZEDWINDOWEDMODE' -Type String -ErrorAction SilentlyContinue}; Write-FOMLog 'FSO disabilitate per FiveM e GTA5' 'OK'"
+    ],
+    "UndoScript": [
+      "$lp='HKCU:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers'; $paths=@(\"$env:LOCALAPPDATA\\FiveM\\FiveM.exe\",'C:\\Program Files (x86)\\Steam\\steamapps\\common\\Grand Theft Auto V\\GTA5.exe','C:\\Program Files\\Rockstar Games\\Grand Theft Auto V\\GTA5.exe','C:\\Program Files\\Epic Games\\GTAV\\GTA5.exe'); foreach($p in $paths){Remove-ItemProperty $lp -Name $p -ErrorAction SilentlyContinue}; Write-FOMLog 'Fullscreen Optimizations ripristinate' 'OK'"
+    ]
+  },
+
+  "GamingHPET": {
+    "Content": "Disabilita HPET — Usa TSC Timer",
+    "Description": "Rimuove useplatformclock. Il sistema usa il timer TSC della CPU invece di HPET: meno interrupt, frame time piu consistente. Alternativa a 'Timer Resolution 0.5ms'. Richiede riavvio.",
+    "category": "Gaming", "Order": "c13", "Checked": false,
+    "InvokeScript": [
+      "bcdedit /deletevalue useplatformclock 2>$null | Out-Null; bcdedit /set disabledynamictick yes 2>$null | Out-Null; Write-FOMLog 'HPET rimosso, TSC timer attivato (effetto dopo riavvio)' 'OK'"
+    ],
+    "UndoScript": [
+      "bcdedit /set useplatformclock true 2>$null | Out-Null; Write-FOMLog 'Platform clock ripristinato (effetto dopo riavvio)' 'OK'"
+    ]
+  },
+
+  "SistemaPowerThrottle": {
+    "Content": "Disabilita Power Throttling",
+    "Description": "PowerThrottlingOff=1. Impedisce a Windows di ridurre la CPU dei processi classificati come background. Mantiene piena responsivita degli overlay e processi FiveM.",
+    "category": "Sistema", "Order": "d13", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Power\\PowerThrottling", "Name": "PowerThrottlingOff", "Value": "1", "OriginalValue": "0", "Type": "DWord" }
+    ]
+  },
+
+  "SistemaTCPOptimize": {
+    "Content": "Ottimizza Stack TCP/IP",
+    "Description": "MaxUserPort=65534, TcpTimedWaitDelay=30s, Tcp1323Opts=1, DefaultTTL=64. Piu porte disponibili, rilascio veloce delle connessioni chiuse. Riduce jitter sui server FiveM.",
+    "category": "Sistema", "Order": "d14", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", "Name": "MaxUserPort",        "Value": "65534", "OriginalValue": "5000",  "Type": "DWord" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", "Name": "TcpTimedWaitDelay",  "Value": "30",    "OriginalValue": "240",   "Type": "DWord" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", "Name": "Tcp1323Opts",        "Value": "1",     "OriginalValue": "0",     "Type": "DWord" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", "Name": "DefaultTTL",         "Value": "64",    "OriginalValue": "128",   "Type": "DWord" }
+    ]
+  },
+
+  "SistemaShutdownSpeed": {
+    "Content": "Velocizza Shutdown e Riavvio",
+    "Description": "WaitToKillAppTimeout=2000ms, HungAppTimeout=1000ms, AutoEndTasks=1, WaitToKillServiceTimeout=2000ms. Chiusura del sistema fino a 10x piu rapida.",
+    "category": "Sistema", "Order": "d15", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Control Panel\\Desktop",             "Name": "WaitToKillAppTimeout",     "Value": "2000",  "OriginalValue": "20000", "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Desktop",             "Name": "HungAppTimeout",           "Value": "1000",  "OriginalValue": "5000",  "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Desktop",             "Name": "AutoEndTasks",             "Value": "1",     "OriginalValue": "0",     "Type": "String" },
+      { "Path": "HKCU:\\Control Panel\\Desktop",             "Name": "LowLevelHooksTimeout",     "Value": "1000",  "OriginalValue": "5000",  "Type": "String" },
+      { "Path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control", "Name": "WaitToKillServiceTimeout", "Value": "2000",  "OriginalValue": "20000", "Type": "String" }
+    ]
+  },
+
+  "SvcPrintSpooler": { "Content": "Print Spooler (solo senza stampante)", "Description": "Servizio di stampa Windows. Disabilita solo se non usi stampanti fisiche o virtuali (PDF incluso).", "category": "Servizi", "Order": "e16", "Checked": false, "safe": false, "service": [{ "Name": "Spooler", "StartupType": "Disabled", "OriginalType": "Automatic" }] },
+
+  "SvcBluetooth": { "Content": "Bluetooth Support (solo senza BT)", "Description": "Servizio di supporto Bluetooth. Disabilita solo se non usi mouse, cuffie o altri dispositivi Bluetooth.", "category": "Servizi", "Order": "e17", "Checked": false, "safe": false, "service": [{ "Name": "bthserv", "StartupType": "Disabled", "OriginalType": "Manual" }] },
+
+  "KillSearchIndexer":   { "Content": "Windows Search Indexer",       "Description": "SearchIndexer + SearchHost + SearchApp. Causa spike I/O disco durante il gioco. Il servizio WSearch e' gia' disabilitato ma il processo puo' restare in memoria.",  "category": "Processi", "Order": "a18", "Checked": true,  "safe": true,  "InvokeScript": ["'SearchIndexer','SearchHost','SearchApp' | ForEach-Object { Get-Process -Name $_ -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue }; Write-FOMLog 'Search Indexer terminato' 'OK'"],                                                             "UndoScript": ["Write-FOMLog 'Search Indexer si riavvia al prossimo accesso' 'INFO'"] },
+  "KillWinUpdate":       { "Content": "Windows Update (processi attivi)",  "Description": "TiWorker + MoUsoCoreWorker + WaasMedicAgent + UsoClient. Causa spike CPU e disco durante il gioco. Non disabilita Windows Update permanentemente.", "category": "Processi", "Order": "a19", "Checked": true,  "safe": true,  "InvokeScript": ["'TiWorker','MoUsoCoreWorker','WaasMedicAgent','UsoClient','wuauclt' | ForEach-Object { Get-Process -Name $_ -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue }; Write-FOMLog 'Windows Update processi terminati' 'OK'"],                      "UndoScript": ["Write-FOMLog 'Windows Update riprendera automaticamente' 'INFO'"] },
+  "KillCompatTelemetry": { "Content": "Compatibility Telemetry Runner",   "Description": "CompatTelRunner — raccoglie dati compatibilita app periodicamente. Causa spike CPU ogni poche ore. Killer della fluidita su sessioni lunghe.",              "category": "Processi", "Order": "a20", "Checked": true,  "safe": true,  "InvokeScript": ["'CompatTelRunner','DeviceCensus' | ForEach-Object { Get-Process -Name $_ -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue }; Write-FOMLog 'CompatTelRunner terminato' 'OK'"],                                                                   "UndoScript": ["Write-FOMLog 'CompatTelRunner si riavvia da task pianificato' 'INFO'"] },
+  "KillPhoneLink":       { "Content": "Phone Link (Your Phone)",           "Description": "PhoneExperienceHost + YourPhone. Sincronizzazione continua con lo smartphone. Usa CPU, RAM e rete in background.",                                             "category": "Processi", "Order": "a21", "Checked": true,  "safe": true,  "InvokeScript": ["'PhoneExperienceHost','YourPhone','YourPhoneAppProxy' | ForEach-Object { Get-Process -Name $_ -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue }; Write-FOMLog 'Phone Link terminato' 'OK'"],                                               "UndoScript": ["Write-FOMLog 'Riavvia Phone Link manualmente se necessario' 'INFO'"] },
+  "KillEdgeWebView":     { "Content": "Edge WebView2 Runtime",             "Description": "msedgewebview2 — runtime Chromium usato da Widgets, Teams, OneDrive e altre app. Puo occupare 100-300MB RAM inutilmente.",                                     "category": "Processi", "Order": "a22", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'msedgewebview2' -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Edge WebView2 terminato' 'OK'"],                                                                                               "UndoScript": ["Write-FOMLog 'Edge WebView2 si riavvia quando necessario' 'INFO'"] },
+  "KillRuntimeBroker":   { "Content": "Runtime Broker (UWP)",              "Description": "RuntimeBroker — gestore permessi app UWP. Piu istanze in background. Sicuro da killare per sessioni gaming: le app UWP non crashano.",                        "category": "Processi", "Order": "a23", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'RuntimeBroker' -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Runtime Broker terminato' 'OK'"],                                                                                              "UndoScript": ["Write-FOMLog 'Runtime Broker si riavvia automaticamente' 'INFO'"] },
+  "KillSkype":           { "Content": "Skype",                          "Description": "Skype (background e notifiche)",                    "category": "Processi", "Order": "a24", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'Skype'                   -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Skype terminato' 'OK'"],                    "UndoScript": ["Write-FOMLog 'Riavvia Skype manualmente se necessario' 'INFO'"] },
+  "KillGeForceExp":      { "Content": "GeForce Experience",              "Description": "NVIDIA GeForce Experience + NvNode (telemetria GPU)","category": "Processi", "Order": "a25", "Checked": true,  "safe": true,  "InvokeScript": ["'NVIDIA GeForce Experience','NvNode','NvNodeLauncher' | ForEach-Object { Get-Process -Name $_ -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue }; Write-FOMLog 'GeForce Experience terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia GeForce Experience manualmente se necessario' 'INFO'"] },
+  "KillRazer":           { "Content": "Razer Synapse",                   "Description": "Razer Synapse 3 + servizi background Razer",        "category": "Processi", "Order": "a26", "Checked": true,  "safe": true,  "InvokeScript": ["'Razer Synapse 3','RazerCentralService','RazerIngameEngine','RazerSynapse' | ForEach-Object { Get-Process -Name $_ -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue }; Write-FOMLog 'Razer Synapse terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia Razer Synapse manualmente se necessario' 'INFO'"] },
+  "KillLogitech":        { "Content": "Logitech G HUB / Options",        "Description": "Logitech LGHUB e Options — overlay e aggiornamenti", "category": "Processi", "Order": "a27", "Checked": true,  "safe": true,  "InvokeScript": ["'LGHUB','LogiOptions','LogiOptionsMgr','logi_crashpad_handler' | ForEach-Object { Get-Process -Name $_ -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue }; Write-FOMLog 'Logitech G HUB terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia Logitech G HUB manualmente se necessario' 'INFO'"] },
+  "KillAdobeCC":         { "Content": "Adobe Creative Cloud",            "Description": "Adobe Creative Cloud + Desktop Service (background)","category": "Processi", "Order": "a28", "Checked": true,  "safe": true,  "InvokeScript": ["'Creative Cloud','Adobe Desktop Service','AGMService','AGSService' | ForEach-Object { Get-Process -Name $_ -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue }; Write-FOMLog 'Adobe Creative Cloud terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia Adobe Creative Cloud manualmente se necessario' 'INFO'"] },
+  "KillZoom":            { "Content": "Zoom",                            "Description": "Zoom client e helper background",                   "category": "Processi", "Order": "a29", "Checked": true,  "safe": true,  "InvokeScript": ["'Zoom','CptHost','zCrashReport' | ForEach-Object { Get-Process -Name $_ -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue }; Write-FOMLog 'Zoom terminato' 'OK'"],                    "UndoScript": ["Write-FOMLog 'Riavvia Zoom manualmente se necessario' 'INFO'"] },
+  "KillSecurityTray":    { "Content": "Windows Security Tray",           "Description": "SecurityHealthSystray.exe — icona notifica tray. Non disabilita Defender.",  "category": "Processi", "Order": "a30", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'SecurityHealthSystray' -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Write-FOMLog 'Security tray terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia manualmente: SecurityHealthSystray.exe' 'INFO'"] },
+  "KillWidgets":         { "Content": "Widgets (pannello notizie Win11)", "Description": "Widgets.exe — pannello notizie/meteo Windows 11 in background. Libera RAM e CPU.",  "category": "Processi", "Order": "a31", "Checked": true,  "safe": true,  "InvokeScript": ["'Widgets','WidgetService' | ForEach-Object { Get-Process -Name $_ -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue }; Write-FOMLog 'Widgets terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia Widgets dalla Taskbar' 'INFO'"] },
+
+  "SvcDiagPolicy":  { "Content": "Diagnostic Policy Service",            "Description": "DPS — orchestratore diagnostica Windows. Impostato a Manual: si avvia solo se necessario.",  "category": "Servizi", "Order": "e18", "Checked": false, "safe": true,  "service": [{ "Name": "DPS",          "StartupType": "Manual",   "OriginalType": "Automatic" }] },
+  "SvcDeliveryOpt": { "Content": "Delivery Optimization (P2P Update)",   "Description": "DoSvc — condivisione P2P aggiornamenti Windows con altri PC in rete. Alto uso disco/rete.",  "category": "Servizi", "Order": "e19", "Checked": true,  "safe": true,  "service": [{ "Name": "DoSvc",        "StartupType": "Disabled", "OriginalType": "Automatic" }] },
+  "SvcCDP":         { "Content": "Connected Devices Platform",           "Description": "CDPSvc — sincronizzazione dispositivi connessi (Timeline, Condivisione prossimita).",        "category": "Servizi", "Order": "e20", "Checked": true,  "safe": true,  "service": [{ "Name": "CDPSvc",       "StartupType": "Disabled", "OriginalType": "Automatic" }] },
+  "SvcWInsider":    { "Content": "Windows Insider Service",              "Description": "wisvc — servizio Windows Insider Program. Inutile se non iscritto al programma Insider.",     "category": "Servizi", "Order": "e21", "Checked": true,  "safe": true,  "service": [{ "Name": "wisvc",        "StartupType": "Disabled", "OriginalType": "Manual"    }] },
+  "SvcEdgeUpdate":  { "Content": "Microsoft Edge Updater",               "Description": "edgeupdate + edgeupdatem — aggiornamento automatico di Edge in background.",                  "category": "Servizi", "Order": "e22", "Checked": true,  "safe": true,  "service": [{ "Name": "edgeupdate",   "StartupType": "Disabled", "OriginalType": "Automatic" }, { "Name": "edgeupdatem", "StartupType": "Disabled", "OriginalType": "Manual" }] },
+  "SvcPCA":         { "Content": "Program Compatibility Assistant",      "Description": "PcaSvc — controlla compatibilita app e invia telemetria a Microsoft. Nessun impatto sul gaming.",  "category": "Servizi", "Order": "e23", "Checked": false, "safe": true,  "service": [{ "Name": "PcaSvc",       "StartupType": "Disabled", "OriginalType": "Automatic" }] },
+  "SvcBlockWindowsUpdate": {
+    "Content": "Blocca Windows Update",
+    "Description": "Disabilita wuauserv + UsoSvc + DoSvc + TrustedInstaller (radice di TiWorker). WaaSMedicSvc=4 via registro (best-effort). Disabilita scheduled task WindowsUpdate. Policy AU NoAutoUpdate=1 + pause fino al 2038. Elimina spike CPU/RAM/disco. UNDO ripristina tutto. Esegui UNDO periodicamente per gli aggiornamenti di sicurezza.",
+    "category": "Servizi", "Order": "e24", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$svcs=@('wuauserv','UsoSvc','DoSvc','WaaSMedicSvc','TrustedInstaller'); foreach($s in $svcs){ Stop-Service $s -Force -EA SilentlyContinue; Set-Service $s -StartupType Disabled -EA SilentlyContinue }; Set-Service 'bits' -StartupType Manual -EA SilentlyContinue; Set-ItemProperty 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\WaaSMedicSvc' -Name 'Start' -Value 4 -Type DWord -EA SilentlyContinue; Disable-ScheduledTask -TaskPath '\\Microsoft\\Windows\\WindowsUpdate\\' -TaskName 'Scheduled Start' -EA SilentlyContinue; New-Item 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate' -Force -EA SilentlyContinue|Out-Null; New-Item 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU' -Force -EA SilentlyContinue|Out-Null; Set-ItemProperty 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU' -Name 'NoAutoUpdate' -Value 1 -Type DWord -EA SilentlyContinue; Set-ItemProperty 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU' -Name 'AUOptions' -Value 1 -Type DWord -EA SilentlyContinue; $ux='HKLM:\\SOFTWARE\\Microsoft\\WindowsUpdate\\UX\\Settings'; Set-ItemProperty $ux -Name 'PauseUpdatesExpiryTime' -Value '2038-01-19T03:14:07Z' -Type String -EA SilentlyContinue; Set-ItemProperty $ux -Name 'PauseQualityUpdatesExpiryTime' -Value '2038-01-19T03:14:07Z' -Type String -EA SilentlyContinue; Set-ItemProperty $ux -Name 'PauseFeatureUpdatesExpiryTime' -Value '2038-01-19T03:14:07Z' -Type String -EA SilentlyContinue; Write-FOMLog 'Windows Update bloccato: wuauserv + UsoSvc + DoSvc + TrustedInstaller + task + policy AU' 'OK'"
+    ],
+    "UndoScript": [
+      "Set-ItemProperty 'HKLM:\\SYSTEM\\CurrentControlSet\\Services\\WaaSMedicSvc' -Name 'Start' -Value 3 -Type DWord -EA SilentlyContinue; foreach($s in @('wuauserv','UsoSvc','DoSvc','TrustedInstaller')){ Set-Service $s -StartupType Manual -EA SilentlyContinue; Start-Service $s -EA SilentlyContinue }; Enable-ScheduledTask -TaskPath '\\Microsoft\\Windows\\WindowsUpdate\\' -TaskName 'Scheduled Start' -EA SilentlyContinue; Remove-ItemProperty 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU' -Name 'NoAutoUpdate' -EA SilentlyContinue; Remove-ItemProperty 'HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU' -Name 'AUOptions' -EA SilentlyContinue; $ux='HKLM:\\SOFTWARE\\Microsoft\\WindowsUpdate\\UX\\Settings'; @('PauseUpdatesExpiryTime','PauseQualityUpdatesExpiryTime','PauseFeatureUpdatesExpiryTime') | ForEach-Object{ Remove-ItemProperty $ux -Name $_ -EA SilentlyContinue }; Write-FOMLog 'Windows Update riabilitato: servizi + task + policy ripristinati' 'OK'"
+    ]
+  },
+
+  "SistemaAdvertisingID": {
+    "Content": "Disabilita Advertising ID e CEIP",
+    "Description": "Enabled=0, DisabledByGroupPolicy=1, TailoredExperiences=0. Disabilita l'ID pubblicitario univoco e le esperienze personalizzate basate su diagnostica.",
+    "category": "Sistema", "Order": "d16", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",            "Name": "Enabled",                                        "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo",                  "Name": "DisabledByGroupPolicy",                          "Value": "1", "OriginalValue": "0", "Type": "DWord" },
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Privacy",                    "Name": "TailoredExperiencesWithDiagnosticDataEnabled",    "Value": "0", "OriginalValue": "1", "Type": "DWord" }
+    ]
+  },
+
+  "SistemaFeedback": {
+    "Content": "Disabilita Windows Feedback",
+    "Description": "NumberOfSIUFInPeriod=0, DoNotShowFeedbackNotifications=1. Elimina i popup di feedback di Windows e le segnalazioni periodiche a Microsoft.",
+    "category": "Sistema", "Order": "d17", "Checked": true,
+    "registry": [
+      { "Path": "HKCU:\\Software\\Microsoft\\Siuf\\Rules",                                         "Name": "NumberOfSIUFInPeriod",              "Value": "0", "OriginalValue": "3", "Type": "DWord" },
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",                   "Name": "DoNotShowFeedbackNotifications",     "Value": "1", "OriginalValue": "0", "Type": "DWord" }
+    ]
+  },
+
+  "SistemaWidgetsPolicy": {
+    "Content": "Disabilita Widgets e News Background",
+    "Description": "AllowNewsAndInterests=0, ShellFeedsTaskbarViewMode=2. Disabilita completamente il pannello Widgets tramite policy e disattiva i task pianificati correlati.",
+    "category": "Sistema", "Order": "d18", "Checked": true,
+    "registry": [
+      { "Path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Dsh",                                       "Name": "AllowNewsAndInterests",    "Value": "0", "OriginalValue": "1", "Type": "DWord" },
+      { "Path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Feeds",                      "Name": "ShellFeedsTaskbarViewMode","Value": "2", "OriginalValue": "0", "Type": "DWord" }
+    ],
+    "InvokeScript": [
+      "Get-ScheduledTask -TaskPath '\\Microsoft\\Windows\\Widgets\\*' -ErrorAction SilentlyContinue | Disable-ScheduledTask -ErrorAction SilentlyContinue; Get-ScheduledTask -TaskPath '\\Microsoft\\Windows\\Feeds\\*' -ErrorAction SilentlyContinue | Disable-ScheduledTask -ErrorAction SilentlyContinue; Write-FOMLog 'Task pianificati Widgets/Feeds disabilitati' 'OK'"
+    ],
+    "UndoScript": [
+      "Get-ScheduledTask -TaskPath '\\Microsoft\\Windows\\Widgets\\*' -ErrorAction SilentlyContinue | Enable-ScheduledTask -ErrorAction SilentlyContinue; Get-ScheduledTask -TaskPath '\\Microsoft\\Windows\\Feeds\\*' -ErrorAction SilentlyContinue | Enable-ScheduledTask -ErrorAction SilentlyContinue; Write-FOMLog 'Task pianificati Widgets/Feeds ripristinati' 'OK'"
+    ]
+  },
+
+  "GamingScheduledTasks": {
+    "Content": "Disabilita Task CEIP e Diagnostica",
+    "Description": "Disabilita i task pianificati Windows che causano spike CPU/disco periodici: CompatTelRunner, Consolidator, DiskDiagnostic, QueueReporting, ProgramDataUpdater. Effetto immediato, nessun riavvio.",
+    "category": "Gaming", "Order": "c18", "Checked": true,
+    "InvokeScript": [
+      "$tasks=@('Microsoft Compatibility Appraiser','ProgramDataUpdater','StartupAppTask','Consolidator','UsbCeip','Microsoft-Windows-DiskDiagnosticDataCollector','QueueReporting','BthSQM'); $c=0; foreach($t in $tasks){$st=Get-ScheduledTask -TaskName $t -ErrorAction SilentlyContinue; if($st){Disable-ScheduledTask -TaskName $t -ErrorAction SilentlyContinue|Out-Null; $c++}}; Write-FOMLog \"Disabilitati $c task CEIP/Diagnostica\" 'OK'"
+    ],
+    "UndoScript": [
+      "$tasks=@('Microsoft Compatibility Appraiser','ProgramDataUpdater','StartupAppTask','Consolidator','UsbCeip','Microsoft-Windows-DiskDiagnosticDataCollector','QueueReporting','BthSQM'); $c=0; foreach($t in $tasks){$st=Get-ScheduledTask -TaskName $t -ErrorAction SilentlyContinue; if($st){Enable-ScheduledTask -TaskName $t -ErrorAction SilentlyContinue|Out-Null; $c++}}; Write-FOMLog \"Ripristinati $c task CEIP/Diagnostica\" 'OK'"
+    ]
+  },
+
+  "IntelCStates": {
+    "Content": "Intel: Disabilita C-States CPU",
+    "Description": "intelppm CstateEnabled=0 + IdleDisable powercfg. Elimina latenza wake-up C1/C3/C6/C8. Aumenta consumo a riposo. Richiede riavvio. Solo CPU Intel.",
+    "category": "Gaming", "Order": "c14", "Checked": false,
+    "InvokeScript": [
+      "$cpu=(Get-WmiObject Win32_Processor|Select-Object -First 1).Name; if($cpu -notmatch 'Intel'){Write-FOMLog \"IntelCStates: CPU rilevata '$cpu' — non e Intel, skip\" 'WARN';return}; $p='HKLM:\\SYSTEM\\CurrentControlSet\\Services\\intelppm\\Parameters'; if(Test-Path $p){Set-ItemProperty $p -Name 'CstateEnabled' -Value 0 -Type DWord -ErrorAction SilentlyContinue; Write-FOMLog 'intelppm CstateEnabled=0' 'OK'} else {Write-FOMLog 'intelppm non trovato (usa BIOS per C-States)' 'WARN'}; powercfg /SETACVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; Write-FOMLog 'Intel C-States disabilitati (riavvio consigliato)' 'OK'"
+    ],
+    "UndoScript": [
+      "$p='HKLM:\\SYSTEM\\CurrentControlSet\\Services\\intelppm\\Parameters'; if(Test-Path $p){Remove-ItemProperty $p -Name 'CstateEnabled' -ErrorAction SilentlyContinue}; powercfg /SETACVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 5d76a2ca-e8c0-402f-a133-2158492d58ad 0 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; Write-FOMLog 'Intel C-States ripristinati' 'OK'"
+    ]
+  },
+
+  "IntelPerfBoost": {
+    "Content": "Intel: Turbo Boost Aggressivo",
+    "Description": "PERFBOOSTMODE=Aggressive (2), EPP=0 (Max Performance), PROCTHROTTLEMIN=100. Massima frequenza CPU costante senza throttling. Solo CPU Intel — skip automatico su AMD.",
+    "category": "Gaming", "Order": "c15", "Checked": true,
+    "InvokeScript": [
+      "$cpu=(Get-WmiObject Win32_Processor|Select-Object -First 1).Name; if($cpu -notmatch 'Intel'){Write-FOMLog \"IntelPerfBoost: CPU rilevata '$cpu' — non e Intel, skip\" 'WARN';return}; powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 2 2>$null; powercfg /SETACVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 36687f9e-e3a5-4dbf-b1dc-15eb381c6863 0 2>$null; powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR PROCTHROTTLEMIN 100 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; Write-FOMLog \"Intel Turbo Boost Aggressivo applicato ($cpu)\" 'OK'"
+    ],
+    "UndoScript": [
+      "powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 1 2>$null; powercfg /SETACVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 36687f9e-e3a5-4dbf-b1dc-15eb381c6863 50 2>$null; powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR PROCTHROTTLEMIN 0 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; Write-FOMLog 'Intel Turbo Boost ripristinato' 'OK'"
+    ]
+  },
+
+  "AMDCStates": {
+    "Content": "AMD: Disabilita C-States CPU",
+    "Description": "amdppm CstateEnabled=0 + IdleDisable powercfg. Elimina latenza wake-up dei core Ryzen. Aumenta consumo a riposo. Richiede riavvio. Solo CPU AMD Ryzen.",
+    "category": "Gaming", "Order": "c16", "Checked": false,
+    "InvokeScript": [
+      "$cpu=(Get-WmiObject Win32_Processor|Select-Object -First 1).Name; if($cpu -notmatch 'AMD'){Write-FOMLog \"AMDCStates: CPU rilevata '$cpu' — non e AMD, skip\" 'WARN';return}; $p='HKLM:\\SYSTEM\\CurrentControlSet\\Services\\amdppm\\Parameters'; if(Test-Path $p){Set-ItemProperty $p -Name 'CstateEnabled' -Value 0 -Type DWord -ErrorAction SilentlyContinue; Write-FOMLog 'amdppm CstateEnabled=0' 'OK'} else {Write-FOMLog 'amdppm non trovato (usa BIOS per C-States su Ryzen)' 'WARN'}; powercfg /SETACVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 5d76a2ca-e8c0-402f-a133-2158492d58ad 1 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; Write-FOMLog 'AMD C-States disabilitati (riavvio consigliato)' 'OK'"
+    ],
+    "UndoScript": [
+      "$p='HKLM:\\SYSTEM\\CurrentControlSet\\Services\\amdppm\\Parameters'; if(Test-Path $p){Remove-ItemProperty $p -Name 'CstateEnabled' -ErrorAction SilentlyContinue}; powercfg /SETACVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 5d76a2ca-e8c0-402f-a133-2158492d58ad 0 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; Write-FOMLog 'AMD C-States ripristinati' 'OK'"
+    ]
+  },
+
+  "AMDPrecisionBoost": {
+    "Content": "AMD: Precision Boost Aggressivo",
+    "Description": "PERFBOOSTMODE=Aggressive (2), EPP=0 (Max Performance), PROCTHROTTLEMIN=100. Massima frequenza Ryzen costante. Complementare a Ultimate Performance Plan. Solo CPU AMD — skip automatico su Intel.",
+    "category": "Gaming", "Order": "c17", "Checked": true,
+    "InvokeScript": [
+      "$cpu=(Get-WmiObject Win32_Processor|Select-Object -First 1).Name; if($cpu -notmatch 'AMD'){Write-FOMLog \"AMDPrecisionBoost: CPU rilevata '$cpu' — non e AMD, skip\" 'WARN';return}; powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 2 2>$null; powercfg /SETACVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 36687f9e-e3a5-4dbf-b1dc-15eb381c6863 0 2>$null; powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR PROCTHROTTLEMIN 100 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; Write-FOMLog \"AMD Precision Boost Aggressivo applicato ($cpu)\" 'OK'"
+    ],
+    "UndoScript": [
+      "powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 1 2>$null; powercfg /SETACVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 36687f9e-e3a5-4dbf-b1dc-15eb381c6863 50 2>$null; powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_PROCESSOR PROCTHROTTLEMIN 0 2>$null; powercfg /setactive SCHEME_CURRENT 2>$null; Write-FOMLog 'AMD Precision Boost ripristinato' 'OK'"
+    ]
+  },
+
+  "KillOverwolf":     { "Content": "Overwolf Overlay",            "Description": "OverwolfBrowser + OverwolfHelper + OverwolfCrashHandler. Overlay gaming pesante in background.",             "category": "Processi", "Order": "a32", "Checked": true,  "safe": true, "InvokeScript": ["'Overwolf','OverwolfBrowser','OverwolfHelper','OverwolfCrashHandler' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'Overwolf terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia Overwolf manualmente' 'INFO'"] },
+  "KillEAApp":        { "Content": "EA App / EA Desktop",         "Description": "EADesktop + EABackgroundService. Launcher EA Games in background.",                                         "category": "Processi", "Order": "a33", "Checked": true,  "safe": true, "InvokeScript": ["'EADesktop','EABackgroundService','EA','EAConnect_microsoft' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'EA App terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia EA App manualmente' 'INFO'"] },
+  "KillUbisoft":      { "Content": "Ubisoft Connect",             "Description": "upc + UplayWebCore. Launcher Ubisoft in background.",                                                       "category": "Processi", "Order": "a34", "Checked": true,  "safe": true, "InvokeScript": ["'upc','UplayWebCore','Uplay' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'Ubisoft Connect terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia Ubisoft Connect manualmente' 'INFO'"] },
+  "KillBattleNet":    { "Content": "Battle.net (Blizzard)",       "Description": "Battle.Net + BlizzardError. Launcher Blizzard in background.",                                              "category": "Processi", "Order": "a35", "Checked": true,  "safe": true, "InvokeScript": ["'Battle.Net','BlizzardError' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'Battle.net terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia Battle.net manualmente' 'INFO'"] },
+  "KillNahimic":      { "Content": "Nahimic Audio Enhancement",   "Description": "NahimicService + Nahimic3UI + NahimicOSD. Audio enhancement che aggiunge latenza. Comune su ASUS/MSI.",     "category": "Processi", "Order": "a36", "Checked": true,  "safe": true, "InvokeScript": ["'NahimicService','Nahimic3UI','NahimicOSD','Nahimic2UILauncher','AudioDevProps2' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'Nahimic terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia Nahimic manualmente' 'INFO'"] },
+  "KillArmouryCrate": { "Content": "ASUS Armoury Crate",          "Description": "ArmouryCrate + ArmouryCrateSVC. Software ASUS RGB/overclock. Solo se hai hardware ASUS.",                 "category": "Processi", "Order": "a37", "Checked": false, "safe": true, "InvokeScript": ["'ArmouryCrate','ArmouryCrateSVC','ASUS_System_Control_Interface_V3','AsusCertService' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'ASUS Armoury Crate terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia Armoury Crate manualmente' 'INFO'"] },
+  "KillMSICenter":    { "Content": "MSI Center / Dragon Center",  "Description": "MSI_Center + MSIComb. Software MSI RGB/overclock. Solo se hai hardware MSI.",                              "category": "Processi", "Order": "a38", "Checked": false, "safe": true, "InvokeScript": ["'MSI_Center','MSIComb','MSIAPPInstall' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'MSI Center terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia MSI Center manualmente' 'INFO'"] },
+  "KillWER":          { "Content": "Windows Error Reporting",     "Description": "WerMgr + WerFault. Genera I/O e CPU al crash di applicazioni. Nessun impatto sul gaming normale.",         "category": "Processi", "Order": "a39", "Checked": true,  "safe": true, "InvokeScript": ["'WerMgr','WerFault','WerFaultSecure' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'Windows Error Reporting terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'WER si riavvia automaticamente al prossimo crash applicativo' 'INFO'"] },
+  "KillCorsairICUE":  { "Content": "Corsair iCUE",                "Description": "iCUE.exe. Gestione RGB Corsair. Alto uso CPU in background. Solo se hai periferiche Corsair.",              "category": "Processi", "Order": "a40", "Checked": false, "safe": true, "InvokeScript": ["'iCUE','CorsairHid','CorsairService' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'Corsair iCUE terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia iCUE manualmente' 'INFO'"] },
+  "KillSteelSeries":  { "Content": "SteelSeries GG / Engine",     "Description": "SteelSeriesGG + SteelSeries_GG + SteelSeriesEngine3. Software periferiche SteelSeries.",                  "category": "Processi", "Order": "a41", "Checked": false, "safe": true, "InvokeScript": ["'SteelSeriesGG','SteelSeries_GG','SteelSeriesEngine3','SteelSeriesEngine' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'SteelSeries GG terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia SteelSeries GG manualmente' 'INFO'"] },
+  "KillTelegram":     { "Content": "Telegram",                    "Description": "Telegram.exe. App messaggistica in background.",                                                            "category": "Processi", "Order": "a42", "Checked": true,  "safe": true, "InvokeScript": ["Get-Process -Name 'Telegram' -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue; Write-FOMLog 'Telegram terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia Telegram manualmente' 'INFO'"] },
+  "KillTwitch":       { "Content": "Twitch Desktop App",          "Description": "Twitch + TwitchUI. Desktop app Twitch in background.",                                                     "category": "Processi", "Order": "a43", "Checked": true,  "safe": true, "InvokeScript": ["'Twitch','TwitchUI' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'Twitch terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Riavvia Twitch manualmente' 'INFO'"] },
+  "KillTiWorker":     { "Content": "Windows Update Workers",     "Description": "TiWorker + MoUsoCoreWorker + UsoClient + WaaSMedicAgent. Ferma anche il servizio TrustedInstaller per impedire il respawn immediato di TiWorker. Principale causa di spike CPU/disco durante il gaming.",    "category": "Processi", "Order": "a44", "Checked": true,  "safe": true,  "InvokeScript": ["'TiWorker','TiWorkerW','MoUsoCoreWorker','UsoClient','WaaSMedicAgent' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Stop-Service 'TrustedInstaller' -Force -EA SilentlyContinue; Write-FOMLog 'TiWorker + TrustedInstaller fermati. No respawn fino al prossimo riavvio.' 'OK'"], "UndoScript": ["Start-Service 'TrustedInstaller' -EA SilentlyContinue; Write-FOMLog 'TrustedInstaller riavviato.' 'OK'"] },
+  "KillPrintSpooler": { "Content": "Print Spooler",              "Description": "spoolsv.exe — gestore code di stampa Windows. Completamente inutile durante il gaming. Libera RAM e riduce I/O disco.",                                           "category": "Processi", "Order": "a45", "Checked": true,  "safe": true,  "InvokeScript": ["Get-Process -Name 'spoolsv' -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue; Write-FOMLog 'Print Spooler terminato' 'OK'"], "UndoScript": ["Start-Service -Name 'Spooler' -EA SilentlyContinue; Write-FOMLog 'Print Spooler riavviato' 'OK'"] },
+  "KillOfficeBackground": { "Content": "Microsoft Office Background", "Description": "OfficeClickToRun + OfficeC2RClient + MSOSYNC. Aggiornamento e sync Office in background. Genera I/O e connessioni di rete inutili durante il gaming.",  "category": "Processi", "Order": "a46", "Checked": true,  "safe": true,  "InvokeScript": ["'OfficeClickToRun','OfficeC2RClient','MSOSYNC','msoasb','OfficeC2R' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'Microsoft Office background terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Office background si riavvia aprendo Office. Nessuna azione necessaria.' 'INFO'"] },
+  "KillTabletInput":  { "Content": "Tablet PC Input Panel",      "Description": "TabTip.exe + TabTip32.exe. Pannello input tocco e penna Windows. Completamente inutile su PC gaming fisso. Consuma memoria in background.",                      "category": "Processi", "Order": "a47", "Checked": true,  "safe": true,  "InvokeScript": ["'TabTip','TabTip32','InputPersonalization' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'Tablet Input Panel terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Tablet Input si riavvia automaticamente. Nessuna azione necessaria.' 'INFO'"] },
+  "KillEdgeUpdate":   { "Content": "Microsoft Edge Updater",     "Description": "MicrosoftEdgeUpdate.exe. Processo aggiornamento automatico Edge in background. Genera connessioni di rete e I/O disco durante il gaming.",                        "category": "Processi", "Order": "a48", "Checked": true,  "safe": true,  "InvokeScript": ["'MicrosoftEdgeUpdate','msedge_proxy' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'Edge Updater terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Edge Update si riavvia automaticamente. Nessuna azione necessaria.' 'INFO'"] },
+  "KillWMIProvider":  { "Content": "WMI Provider Host",          "Description": "WmiPrvSE.exe + WMIADAP.exe. Host provider WMI. Puo causare spike CPU improvvisi. ATTENZIONE: interrompe temporaneamente software monitoring (HWiNFO64, CPU-Z).", "category": "Processi", "Order": "a49", "Checked": false, "safe": false, "InvokeScript": ["'WmiPrvSE','WMIADAP','WmiApSrv' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'WMI Provider Host terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'WMI Provider Host si riavvia automaticamente. Nessuna azione necessaria.' 'INFO'"] },
+  "KillSpeechRuntime":{ "Content": "Windows Speech Services",    "Description": "SpeechRuntime.exe + SpeechExperienceHost.exe. Servizi riconoscimento vocale Windows. Inutili su PC gaming senza comandi vocali Cortana attivi.",              "category": "Processi", "Order": "a50", "Checked": true,  "safe": true,  "InvokeScript": ["'SpeechRuntime','SpeechExperienceHost','SpeechModelDownload' | ForEach-Object { Get-Process -Name $_ -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue }; Write-FOMLog 'Windows Speech Services terminato' 'OK'"], "UndoScript": ["Write-FOMLog 'Speech Services si riavvia automaticamente. Nessuna azione necessaria.' 'INFO'"] },
+
+  "StartupVanguard": {
+    "Content": "Vanguard: Disabilita autoavvio",
+    "Description": "Servizio vgc impostato a Manual. Vanguard non si avvia con Windows. Prima di Valorant avvia Vanguard manualmente dal menu Start.",
+    "category": "Avvio", "Order": "i01", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$svc=Get-Service -Name 'vgc' -EA SilentlyContinue; if($svc){ Set-Service -Name 'vgc' -StartupType Manual -EA SilentlyContinue; Stop-Service -Name 'vgc' -Force -EA SilentlyContinue; Write-FOMLog 'Vanguard (vgc): Manual + fermato. Avvia Vanguard manualmente prima di Valorant.' 'OK' }else{ Write-FOMLog 'Vanguard (vgc): non trovato (Valorant non installato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$svc=Get-Service -Name 'vgc' -EA SilentlyContinue; if($svc){ Set-Service -Name 'vgc' -StartupType Automatic -EA SilentlyContinue; Write-FOMLog 'Vanguard (vgc): autoavvio ripristinato a Automatic' 'OK' }else{ Write-FOMLog 'Vanguard (vgc): non trovato' 'INFO' }"
+    ]
+  },
+
+  "StartupSteam": {
+    "Content": "Steam: Disabilita autoavvio",
+    "Description": "Rimuove Steam dal registro HKCU\\Run. Steam non si avviera automaticamente all'accensione. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i02", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'Steam'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Steam: autoavvio disabilitato' 'OK' }else{ Write-FOMLog 'Steam: autoavvio non trovato (non installato o gia disabilitato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'Steam_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Steam: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup Steam non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  },
+
+  "StartupDiscord": {
+    "Content": "Discord: Disabilita autoavvio",
+    "Description": "Rimuove Discord (stable) dal registro HKCU\\Run. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i03", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'discord' -and $_ -notlike '*canary*' -and $_ -notlike '*ptb*'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Discord: autoavvio disabilitato' 'OK' }else{ Write-FOMLog 'Discord: autoavvio non trovato (non installato o gia disabilitato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'discord_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Discord: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup Discord non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  },
+
+  "StartupDiscordCanary": {
+    "Content": "Discord Canary: Disabilita autoavvio",
+    "Description": "Rimuove Discord Canary dal registro HKCU\\Run. Separato dalla versione stable. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i04", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike '*discordcanary*' -or $_ -ilike '*discord*canary*'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Discord Canary: autoavvio disabilitato' 'OK' }else{ Write-FOMLog 'Discord Canary: autoavvio non trovato (non installato o gia disabilitato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike '*discordcanary*_fom' -or $_ -ilike '*discord*canary*_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Discord Canary: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup Discord Canary non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  },
+
+  "StartupSpotify": {
+    "Content": "Spotify: Disabilita autoavvio",
+    "Description": "Rimuove Spotify dal registro HKCU\\Run. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i05", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'spotify'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Spotify: autoavvio disabilitato' 'OK' }else{ Write-FOMLog 'Spotify: autoavvio non trovato (non installato o gia disabilitato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'spotify_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Spotify: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup Spotify non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  },
+
+  "StartupEpicGames": {
+    "Content": "Epic Games: Disabilita autoavvio",
+    "Description": "Rimuove Epic Games Launcher dal registro HKCU\\Run. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i06", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'epicgameslauncher' -or $_ -ilike '*epicgames*'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Epic Games: autoavvio disabilitato' 'OK' }else{ Write-FOMLog 'Epic Games: autoavvio non trovato (non installato o gia disabilitato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike '*epicgames*_fom' -or $_ -ilike 'epicgameslauncher_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Epic Games: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup Epic Games non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  },
+
+  "StartupEAApp": {
+    "Content": "EA App / Origin: Disabilita autoavvio",
+    "Description": "Rimuove EA App (o Origin) dal registro HKCU\\Run. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i07", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'EADesktop' -or $_ -ilike 'Origin' -or $_ -ilike 'EA App' -or $_ -ilike 'EAapp'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog \"EA App: autoavvio disabilitato (chiave: $n)\" 'OK' }else{ Write-FOMLog 'EA App: autoavvio non trovato (non installato o gia disabilitato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'EADesktop_fom' -or $_ -ilike 'Origin_fom' -or $_ -ilike '*EA*App*_fom' -or $_ -ilike 'EAapp_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'EA App: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup EA App non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  },
+
+  "StartupUbisoft": {
+    "Content": "Ubisoft Connect: Disabilita autoavvio",
+    "Description": "Rimuove Ubisoft Connect (Uplay) dal registro HKCU\\Run. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i08", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'uplay' -or $_ -ilike 'ubisoft*'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog \"Ubisoft Connect: autoavvio disabilitato (chiave: $n)\" 'OK' }else{ Write-FOMLog 'Ubisoft Connect: autoavvio non trovato (non installato o gia disabilitato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'uplay_fom' -or $_ -ilike 'ubisoft*_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Ubisoft Connect: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup Ubisoft non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  },
+
+  "StartupBattleNet": {
+    "Content": "Battle.net: Disabilita autoavvio",
+    "Description": "Rimuove Battle.net (Blizzard) dal registro HKCU\\Run. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i09", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'battle.net' -or $_ -ilike 'battlenet' -or $_ -ilike 'blizzard*'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog \"Battle.net: autoavvio disabilitato (chiave: $n)\" 'OK' }else{ Write-FOMLog 'Battle.net: autoavvio non trovato (non installato o gia disabilitato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'battle.net_fom' -or $_ -ilike 'battlenet_fom' -or $_ -ilike 'blizzard*_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Battle.net: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup Battle.net non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  },
+
+  "StartupOneDrive": {
+    "Content": "OneDrive: Disabilita autoavvio",
+    "Description": "Rimuove OneDrive dal registro HKCU\\Run. OneDrive non si avviera con Windows. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i10", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'onedrive'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'OneDrive: autoavvio disabilitato' 'OK' }else{ Write-FOMLog 'OneDrive: autoavvio non trovato (gia disabilitato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'onedrive_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'OneDrive: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup OneDrive non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  },
+
+  "StartupTeams": {
+    "Content": "Microsoft Teams: Disabilita autoavvio",
+    "Description": "Rimuove Microsoft Teams dal registro HKCU\\Run. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i11", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'Teams' -or $_ -ilike '*squirrel*Teams*' -or $_ -ilike 'com.squirrel.Teams*'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog \"Teams: autoavvio disabilitato (chiave: $n)\" 'OK' }else{ Write-FOMLog 'Teams: autoavvio non trovato (gia disabilitato o non installato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'Teams_fom' -or $_ -ilike '*squirrel*Teams*_fom' -or $_ -ilike 'com.squirrel.Teams*_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Teams: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup Teams non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  },
+
+  "StartupRazer": {
+    "Content": "Razer Synapse: Disabilita autoavvio",
+    "Description": "Rimuove Razer Synapse dal registro HKCU\\Run e HKLM\\Run. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i12", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike '*razer*'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog \"Razer Synapse: autoavvio HKCU disabilitato (chiave: $n)\" 'OK' }else{ $k2='HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run'; $n2=(Get-Item $k2 -EA SilentlyContinue).Property|Where-Object{$_ -ilike '*razer*'}|Select-Object -First 1; if($n2){ $v2=(Get-ItemProperty $k2 -Name $n2).$n2; Set-ItemProperty $k2 -Name \"${n2}_fom\" -Value $v2 -EA SilentlyContinue; Remove-ItemProperty $k2 -Name $n2 -EA SilentlyContinue; Write-FOMLog \"Razer Synapse: autoavvio HKLM disabilitato (chiave: $n2)\" 'OK' }else{ Write-FOMLog 'Razer Synapse: autoavvio non trovato (non installato o gia disabilitato)' 'INFO' } }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike '*razer*_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Razer Synapse: autoavvio ripristinato (HKCU)' 'OK' }else{ $k2='HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run'; $n2=(Get-Item $k2 -EA SilentlyContinue).Property|Where-Object{$_ -ilike '*razer*_fom'}|Select-Object -First 1; if($n2){ $v2=(Get-ItemProperty $k2 -Name $n2).$n2; Set-ItemProperty $k2 -Name ($n2 -replace '_fom$','') -Value $v2 -EA SilentlyContinue; Remove-ItemProperty $k2 -Name $n2 -EA SilentlyContinue; Write-FOMLog 'Razer Synapse: autoavvio ripristinato (HKLM)' 'OK' }else{ Write-FOMLog 'Backup Razer non trovato — riabilita da Task Manager > Avvio' 'WARN' } }"
+    ]
+  },
+
+  "StartupLogitech": {
+    "Content": "Logitech G HUB: Disabilita autoavvio",
+    "Description": "Rimuove Logitech G HUB dal registro HKCU\\Run. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i13", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'LGHUB' -or $_ -ilike '*logitech*'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog \"Logitech G HUB: autoavvio disabilitato (chiave: $n)\" 'OK' }else{ Write-FOMLog 'Logitech G HUB: autoavvio non trovato (non installato o gia disabilitato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'LGHUB_fom' -or $_ -ilike '*logitech*_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Logitech G HUB: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup Logitech non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  },
+
+  "StartupCorsair": {
+    "Content": "Corsair iCUE: Disabilita autoavvio",
+    "Description": "Rimuove Corsair iCUE dal registro HKCU\\Run. Backup salvato per UNDO.",
+    "category": "Avvio", "Order": "i14", "Checked": false, "safe": false,
+    "InvokeScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'iCUE' -or $_ -ilike '*corsair*'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name \"${n}_fom\" -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog \"Corsair iCUE: autoavvio disabilitato (chiave: $n)\" 'OK' }else{ Write-FOMLog 'Corsair iCUE: autoavvio non trovato (non installato o gia disabilitato)' 'INFO' }"
+    ],
+    "UndoScript": [
+      "$k='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'; $n=(Get-Item $k -EA SilentlyContinue).Property|Where-Object{$_ -ilike 'iCUE_fom' -or $_ -ilike '*corsair*_fom'}|Select-Object -First 1; if($n){ $v=(Get-ItemProperty $k -Name $n).$n; Set-ItemProperty $k -Name ($n -replace '_fom$','') -Value $v -EA SilentlyContinue; Remove-ItemProperty $k -Name $n -EA SilentlyContinue; Write-FOMLog 'Corsair iCUE: autoavvio ripristinato' 'OK' }else{ Write-FOMLog 'Backup Corsair non trovato — riabilita da Task Manager > Avvio' 'WARN' }"
+    ]
+  }
+}

@@ -1,0 +1,283 @@
+<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="el italiano Performance Optimizer v1.0"
+    Height="820" Width="1200"
+    MinHeight="680" MinWidth="980"
+    WindowStartupLocation="CenterScreen"
+    Background="#0F1117"
+    FontFamily="Segoe UI"
+    FontSize="13">
+
+  <Window.Resources>
+
+    <SolidColorBrush x:Key="BgMain"    Color="#0F1117"/>
+    <SolidColorBrush x:Key="BgPanel"   Color="#161B27"/>
+    <SolidColorBrush x:Key="BgCard"    Color="#1C2333"/>
+    <SolidColorBrush x:Key="BgConsole" Color="#090B0F"/>
+    <SolidColorBrush x:Key="Border1"   Color="#252D42"/>
+    <SolidColorBrush x:Key="Accent"    Color="#00C8FF"/>
+    <SolidColorBrush x:Key="AccentDim" Color="#0D2535"/>
+    <SolidColorBrush x:Key="Green"     Color="#00E676"/>
+    <SolidColorBrush x:Key="Orange"    Color="#FFAB40"/>
+    <SolidColorBrush x:Key="Red"       Color="#FF5252"/>
+    <SolidColorBrush x:Key="TextMain"  Color="#E2EAF8"/>
+    <SolidColorBrush x:Key="TextMuted" Color="#5A6A8A"/>
+    <SolidColorBrush x:Key="TextDim"   Color="#3A4A6A"/>
+
+    <!-- CheckBox -->
+    <Style TargetType="CheckBox">
+      <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+      <Setter Property="Margin"     Value="0,2"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Base button template -->
+    <Style x:Key="BtnBase" TargetType="Button">
+      <Setter Property="Cursor"      Value="Hand"/>
+      <Setter Property="FontWeight"  Value="SemiBold"/>
+      <Setter Property="FontSize"    Value="12"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="bd"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="5">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Margin="{TemplateBinding Padding}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="bd" Property="Opacity" Value="0.78"/>
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="bd" Property="Opacity" Value="0.5"/>
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="bd" Property="Opacity" Value="0.3"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <!-- Nav button (left sidebar) -->
+    <Style x:Key="NavBtn" TargetType="Button" BasedOn="{StaticResource BtnBase}">
+      <Setter Property="Background"       Value="Transparent"/>
+      <Setter Property="Foreground"       Value="{StaticResource TextMuted}"/>
+      <Setter Property="BorderBrush"      Value="Transparent"/>
+      <Setter Property="BorderThickness"  Value="0,0,0,0"/>
+      <Setter Property="Padding"          Value="14,10"/>
+      <Setter Property="HorizontalContentAlignment" Value="Left"/>
+      <Setter Property="FontSize"         Value="12"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="bd"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="0,0,0,1"
+                    Padding="{TemplateBinding Padding}">
+              <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="bd" Property="Background" Value="#161B27"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <!-- Action buttons -->
+    <Style x:Key="BtnCyan" TargetType="Button" BasedOn="{StaticResource BtnBase}">
+      <Setter Property="Background"  Value="{StaticResource AccentDim}"/>
+      <Setter Property="Foreground"  Value="{StaticResource Accent}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
+      <Setter Property="Padding"     Value="12,6"/>
+    </Style>
+    <Style x:Key="BtnGreen" TargetType="Button" BasedOn="{StaticResource BtnBase}">
+      <Setter Property="Background"  Value="#0A2018"/>
+      <Setter Property="Foreground"  Value="{StaticResource Green}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Green}"/>
+      <Setter Property="Padding"     Value="12,6"/>
+    </Style>
+    <Style x:Key="BtnRed" TargetType="Button" BasedOn="{StaticResource BtnBase}">
+      <Setter Property="Background"  Value="#1E0A0A"/>
+      <Setter Property="Foreground"  Value="{StaticResource Red}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Red}"/>
+      <Setter Property="Padding"     Value="12,6"/>
+    </Style>
+
+    <!-- Big Run button -->
+    <Style x:Key="BtnRun" TargetType="Button" BasedOn="{StaticResource BtnBase}">
+      <Setter Property="Background"  Value="{StaticResource Accent}"/>
+      <Setter Property="Foreground"  Value="{StaticResource BgMain}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource Accent}"/>
+      <Setter Property="Padding"     Value="0"/>
+      <Setter Property="FontSize"    Value="14"/>
+      <Setter Property="FontWeight"  Value="Bold"/>
+    </Style>
+
+    <!-- Progress bar -->
+    <Style x:Key="PB" TargetType="ProgressBar">
+      <Setter Property="Height"     Value="4"/>
+      <Setter Property="Background" Value="#1C2333"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Foreground" Value="{StaticResource Accent}"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="ProgressBar">
+            <Border Background="{TemplateBinding Background}" CornerRadius="2">
+              <Border x:Name="PART_Track">
+                <Border x:Name="PART_Indicator"
+                        Background="{TemplateBinding Foreground}"
+                        HorizontalAlignment="Left" CornerRadius="2"/>
+              </Border>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <Style TargetType="ScrollBar">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Width"      Value="5"/>
+    </Style>
+
+  </Window.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="52"/>   <!-- Header        -->
+      <RowDefinition Height="*"/>    <!-- Main content  -->
+      <RowDefinition Height="4"/>    <!-- Progress bar  -->
+      <RowDefinition Height="24"/>   <!-- Status bar    -->
+    </Grid.RowDefinitions>
+
+    <!-- ═══ HEADER ══════════════════════════════════════════════ -->
+    <Border Grid.Row="0" Background="#161B27" BorderBrush="#252D42" BorderThickness="0,0,0,1">
+      <Grid Margin="18,0">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+          <TextBlock Text="⚡" FontSize="18" Foreground="#ff0000" Margin="0,0,10,0" VerticalAlignment="Center"/>
+          <TextBlock VerticalAlignment="Center">
+            <Run FontWeight="Bold" Foreground="#ff0000"  Text="el italiano"/>
+            <Run FontWeight="Light" Foreground="#E2EAF8" Text=" Performance Optimizer"/>
+            <Run FontSize="11" Foreground="#3A4A6A"      Text="  v1.0"/>
+          </TextBlock>
+        </StackPanel>
+        <TextBlock x:Name="HeaderStatus" Text="● Pronto" Foreground="#00E676"
+                   FontSize="11" FontWeight="SemiBold"
+                   HorizontalAlignment="Right" VerticalAlignment="Center"/>
+      </Grid>
+    </Border>
+
+    <!-- ═══ MAIN (nav | options | splitter | console) ════════════ -->
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="165" MinWidth="140"/>
+        <ColumnDefinition Width="390" MinWidth="300"/>
+        <ColumnDefinition Width="5"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <!-- ─── LEFT NAV ─── -->
+      <Border Grid.Column="0" Background="#0D1018" BorderBrush="#252D42" BorderThickness="0,0,1,0">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+
+          <StackPanel Grid.Row="0" Margin="0,6,0,0">
+            <Button x:Name="NavBtn_Scanner"           Content="⚡ Scanner"         Style="{StaticResource NavBtn}"/>
+            <Button x:Name="NavBtn_Processi"          Content="Processi"           Style="{StaticResource NavBtn}"/>
+            <Button x:Name="NavBtn_Input"             Content="Input"              Style="{StaticResource NavBtn}"/>
+            <Button x:Name="NavBtn_Gaming"            Content="Gaming"             Style="{StaticResource NavBtn}"/>
+            <Button x:Name="NavBtn_Sistema"           Content="Sistema"            Style="{StaticResource NavBtn}"/>
+            <Button x:Name="NavBtn_Servizi"           Content="Servizi"            Style="{StaticResource NavBtn}"/>
+            <Button x:Name="NavBtn_Power"             Content="Power &amp; Tools"  Style="{StaticResource NavBtn}"/>
+            <Button x:Name="NavBtn_Debloat"           Content="Debloat"            Style="{StaticResource NavBtn}"/>
+            <Button x:Name="NavBtn_Personalizzazione" Content="Personalizzazione"  Style="{StaticResource NavBtn}"/>
+            <Button x:Name="NavBtn_Avvio"             Content="Avvio"              Style="{StaticResource NavBtn}"/>
+          </StackPanel>
+
+          <!-- Select All / Clear at bottom of nav -->
+          <StackPanel Grid.Row="1" Margin="8,6,8,10">
+            <Button x:Name="BtnSelectAll" Content="Seleziona Sicuri" Style="{StaticResource BtnCyan}" Height="28" Margin="0,0,0,4"/>
+            <Button x:Name="BtnClearAll"  Content="Deseleziona Tutti" Style="{StaticResource BtnRed}"  Height="28"/>
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <!-- ─── OPTIONS PANEL ─── -->
+      <Grid Grid.Column="1" Background="#161B27">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+          <StackPanel x:Name="OptionsPanel" Margin="12,10,12,6"/>
+        </ScrollViewer>
+
+        <!-- Bottom action area -->
+        <StackPanel Grid.Row="1" Margin="12,4,12,12">
+          <Button x:Name="RunTweaksButton" Content="▶   RUN TWEAKS"
+                  Style="{StaticResource BtnRun}" Height="48" Margin="0,0,0,5"/>
+          <Button x:Name="UndoButton"      Content="↩  Undo Tweaks"
+                  Style="{StaticResource BtnRed}"  Height="30"/>
+        </StackPanel>
+      </Grid>
+
+      <!-- ─── SPLITTER ─── -->
+      <GridSplitter Grid.Column="2" Width="5" Background="#252D42" HorizontalAlignment="Stretch"/>
+
+      <!-- ─── CONSOLE ─── -->
+      <Grid Grid.Column="3" Background="#090B0F">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="30"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="#0D1018" BorderBrush="#1C2333" BorderThickness="0,0,0,1" Padding="12,6">
+          <StackPanel Orientation="Horizontal">
+            <Ellipse Width="9" Height="9" Fill="#FF5F57" Margin="0,0,5,0"/>
+            <Ellipse Width="9" Height="9" Fill="#FFBD2E" Margin="0,0,5,0"/>
+            <Ellipse Width="9" Height="9" Fill="#28CA41" Margin="0,0,10,0"/>
+            <TextBlock Text="Output Console" Foreground="#3A4A6A" FontSize="11" FontFamily="Consolas" VerticalAlignment="Center"/>
+          </StackPanel>
+        </Border>
+        <TextBox x:Name="ConsoleOutput" Grid.Row="1"
+                 Background="#090B0F" Foreground="#9ECFFF"
+                 BorderThickness="0" FontFamily="Consolas" FontSize="12"
+                 IsReadOnly="True" TextWrapping="Wrap"
+                 VerticalScrollBarVisibility="Auto"
+                 Padding="14,10" AcceptsReturn="True"/>
+      </Grid>
+    </Grid>
+
+    <!-- ═══ PROGRESS BAR ════════════════════════════════════════ -->
+    <ProgressBar x:Name="MainProgressBar" Grid.Row="2"
+                 Style="{StaticResource PB}" Minimum="0" Maximum="100" Value="0"/>
+
+    <!-- ═══ STATUS BAR ══════════════════════════════════════════ -->
+    <Border Grid.Row="3" Background="#0D1018" BorderBrush="#1C2333" BorderThickness="0,1,0,0">
+      <Grid Margin="14,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="StatusBarText" Text="Pronto" Foreground="#3A4A6A"
+                   FontSize="11" FontFamily="Consolas" VerticalAlignment="Center"/>
+        <TextBlock x:Name="SysInfo" Grid.Column="1" Foreground="#3A4A6A"
+                   FontSize="10" FontFamily="Consolas" VerticalAlignment="Center"/>
+      </Grid>
+    </Border>
+
+  </Grid>
+</Window>

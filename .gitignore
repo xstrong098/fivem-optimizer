@@ -1,0 +1,11 @@
+# Dev/IDE
+.claude/
+
+# File compilati
+*.exe
+
+# Assets locali (icona opzionale, non necessaria per funzionare)
+assets/
+
+# Profili utente (contengono dati specifici del PC)
+config/*.nip
