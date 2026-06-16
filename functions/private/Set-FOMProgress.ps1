@@ -21,7 +21,7 @@ function Set-FOMHeaderStatus {
     if ($sync.HeaderStatus) {
         try {
             $sync.HeaderStatus.Dispatcher.Invoke([action]{
-                $sync.HeaderStatus.Text = "● $Text"
+                $sync.HeaderStatus.Text = "* $Text"
                 $sync.HeaderStatus.Foreground = [System.Windows.Media.BrushConverter]::new().ConvertFromString($Color)
             }, [System.Windows.Threading.DispatcherPriority]::Background)
         } catch {}

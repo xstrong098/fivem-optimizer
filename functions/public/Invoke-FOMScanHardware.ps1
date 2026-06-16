@@ -33,7 +33,7 @@ function New-FOMScannerPanel {
 
     # ── Scan button ─────────────────────────────────────────────────────────────
     $btn = New-Object System.Windows.Controls.Button
-    $btn.Content         = "⚡   SCANSIONA IL PC"
+    $btn.Content         = ">>  SCANSIONA IL PC"
     $btn.Height          = 44
     $btn.Margin          = [System.Windows.Thickness]::new(0,0,0,10)
     $btn.FontSize        = 13
@@ -159,7 +159,7 @@ function Invoke-FOMScanHardware {
     Invoke-FOMRunspace -ParameterList @() -ScriptBlock {
 
         $sync.ProcessRunning = $true
-        Write-FOMLog "═══════════════════════════════════════════" "INFO"
+        Write-FOMLog "===========================================" "INFO"
         Write-FOMLog "HARDWARE SCAN - avvio" "TITLE"
         Set-FOMProgress -Value 5 -Status "Rilevamento hardware..."
 
@@ -177,7 +177,6 @@ function Invoke-FOMScanHardware {
         $gpuNames = ($gpus | ForEach-Object { $_.Caption }) -join " + "
         if (-not $gpuNames) { $gpuNames = "Sconosciuto" }
         $hasNvidia = $gpuNames -match 'NVIDIA'
-        $hasAMDGpu = $gpuNames -match 'Radeon|AMD RX|AMD Vega'
         Write-FOMLog "GPU: $gpuNames" "INFO"
         Set-FOMProgress -Value 25 -Status "GPU rilevata..."
 
@@ -240,6 +239,22 @@ function Invoke-FOMScanHardware {
                 if (-not $rec.Contains($tid)) { $rec.Add($tid) }
             }
             Write-FOMLog "Nvidia GPU: aggiunte raccomandazioni overlay Nvidia" "INFO"
+        }
+
+        # CPU Intel → C-States e Turbo Boost
+        if ($isIntel) {
+            foreach ($tid in @('IntelCStates','IntelPerfBoost')) {
+                if (-not $rec.Contains($tid)) { $rec.Add($tid) }
+            }
+            Write-FOMLog "CPU Intel: aggiunte raccomandazioni C-States + Turbo Boost" "INFO"
+        }
+
+        # CPU AMD → C-States e Precision Boost
+        if ($isAMD) {
+            foreach ($tid in @('AMDCStates','AMDPrecisionBoost')) {
+                if (-not $rec.Contains($tid)) { $rec.Add($tid) }
+            }
+            Write-FOMLog "CPU AMD: aggiunte raccomandazioni C-States + Precision Boost" "INFO"
         }
 
         # RAM < 16 GB → seleziona tutti i Kill sicuri
@@ -340,7 +355,7 @@ function Invoke-FOMScanHardware {
         }, [System.Windows.Threading.DispatcherPriority]::Background)
 
         Set-FOMProgress -Value 100 -Status "Scansione completata"
-        Write-FOMLog "═══════════════════════════════════════════" "INFO"
+        Write-FOMLog "===========================================" "INFO"
         Write-FOMLog "SCAN completato - $recCount tweaks selezionati automaticamente." "OK"
         Write-FOMLog "Naviga nei tab per rivedere le selezioni, poi premi RUN TWEAKS." "WARN"
         Set-FOMHeaderStatus "Scan completato - $recCount tweaks" "#00C8FF"

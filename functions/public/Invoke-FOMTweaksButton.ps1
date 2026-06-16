@@ -32,7 +32,7 @@
         $sync.ProcessRunning = $true
         $total = $tweaks.Count
         $i     = 0
-        Write-FOMLog "$( if ($undo) { 'UNDO' } else { 'RUN TWEAKS' } ) — $total tweaks selezionati" "TITLE"
+        Write-FOMLog "$( if ($undo) { 'UNDO' } else { 'RUN TWEAKS' } ) - $total tweaks selezionati" "TITLE"
         if (-not $undo) {
             New-FOMRestorePoint
         }
@@ -42,7 +42,7 @@
             Set-FOMProgress -Value $pct -Status "$( if ($undo) { 'Undo' } else { 'Applico' } ): $id ($i/$total)"
             Invoke-FOMTweaks -TweakID $id -Undo $undo
         }
-        Set-FOMProgress -Value 100 -Status "Completato — $total tweaks"
+        Set-FOMProgress -Value 100 -Status "Completato - $total tweaks"
         Write-FOMLog "========================================" "INFO"
         Write-FOMLog "Operazione completata. $total tweaks processati." "OK"
         Write-FOMLog "Alcuni tweaks richiedono il riavvio del PC." "WARN"
