@@ -77,6 +77,7 @@ $files = @(
     "AVVIA-COME-ADMIN.bat",
     "config/tweaks.json",
     "config/lang/en.json",
+    "config/lang/es.json",
     "xaml/MainWindow.xaml",
     "functions/private/Write-FOMLog.ps1",
     "functions/private/Set-FOMProgress.ps1",
