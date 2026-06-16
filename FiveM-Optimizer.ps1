@@ -52,6 +52,7 @@ if ($uiLang -ne 'it') {
         } catch {}
     }
 }
+$sync.currentLang = if ($null -eq $langFile) { 'it' } else { [System.IO.Path]::GetFileNameWithoutExtension($langFile) }
 
 # ── Dot-source tutte le funzioni ──────────────────────────────
 Get-ChildItem "$PSScriptRoot\functions\private\*.ps1" |

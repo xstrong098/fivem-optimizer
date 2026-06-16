@@ -150,6 +150,30 @@
       <Setter Property="Width"      Value="5"/>
     </Style>
 
+    <!-- Language ComboBox (header top-right) -->
+    <Style x:Key="DarkCombo" TargetType="ComboBox">
+      <Setter Property="Background"      Value="#1C2333"/>
+      <Setter Property="Foreground"      Value="#E2EAF8"/>
+      <Setter Property="BorderBrush"     Value="#252D42"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="FontSize"        Value="11"/>
+      <Setter Property="Padding"         Value="6,2"/>
+    </Style>
+    <Style TargetType="ComboBoxItem">
+      <Setter Property="Background" Value="#1C2333"/>
+      <Setter Property="Foreground" Value="#E2EAF8"/>
+      <Setter Property="Padding"    Value="8,5"/>
+      <Style.Triggers>
+        <Trigger Property="IsHighlighted" Value="True">
+          <Setter Property="Background" Value="#252D42"/>
+        </Trigger>
+        <Trigger Property="IsSelected" Value="True">
+          <Setter Property="Background" Value="#0D2535"/>
+          <Setter Property="Foreground" Value="#00C8FF"/>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+
   </Window.Resources>
 
   <Grid>
@@ -171,9 +195,14 @@
             <Run FontSize="11" Foreground="#3A4A6A"      Text="  v1.0"/>
           </TextBlock>
         </StackPanel>
-        <TextBlock x:Name="HeaderStatus" Text="● Pronto" Foreground="#00E676"
-                   FontSize="11" FontWeight="SemiBold"
-                   HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+          <TextBlock x:Name="HeaderStatus" Text="● Pronto" Foreground="#00E676"
+                     FontSize="11" FontWeight="SemiBold"
+                     VerticalAlignment="Center" Margin="0,0,16,0"/>
+          <ComboBox x:Name="LangCombo" Width="118" Height="26"
+                    Style="{StaticResource DarkCombo}"
+                    VerticalContentAlignment="Center"/>
+        </StackPanel>
       </Grid>
     </Border>
 

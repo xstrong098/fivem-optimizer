@@ -63,6 +63,7 @@ function Invoke-FOMBuildUI {
                 $desc.TextWrapping = [System.Windows.TextWrapping]::Wrap
                 $desc.Margin       = [System.Windows.Thickness]::new(22,0,0,0)
                 $cardSP.Children.Add($desc) | Out-Null
+                $sync["desc_$id"] = $desc
             }
 
             $card.Child = $cardSP
@@ -87,6 +88,69 @@ function Invoke-FOMBuildUI {
 
     # Load first tab (Scanner)
     Invoke-FOMSwitchTab $tabOrder[0]
+
+    # ── Populate language ComboBox ─────────────────────────────────────────────
+    $langDisplay = @{ 'it' = 'IT  Italiano'; 'en' = 'EN  English'; 'es' = 'ES  Espanol' }
+    $langDir     = "$($sync.PSScriptRoot)\config\lang"
+
+    $sync.LangCombo.Items.Clear()
+
+    $itItem         = New-Object System.Windows.Controls.ComboBoxItem
+    $itItem.Content = 'IT  Italiano'
+    $itItem.Tag     = 'it'
+    $sync.LangCombo.Items.Add($itItem) | Out-Null
+
+    if (Test-Path $langDir) {
+        Get-ChildItem "$langDir\*.json" | Sort-Object BaseName | ForEach-Object {
+            $code         = $_.BaseName
+            $lItem        = New-Object System.Windows.Controls.ComboBoxItem
+            $lItem.Content = if ($langDisplay[$code]) { $langDisplay[$code] } else { $code.ToUpper() }
+            $lItem.Tag    = $code
+            $sync.LangCombo.Items.Add($lItem) | Out-Null
+        }
+    }
+
+    foreach ($item in $sync.LangCombo.Items) {
+        if ($item.Tag -eq $sync.currentLang) { $sync.LangCombo.SelectedItem = $item; break }
+    }
+
+    $sync.LangCombo.Add_SelectionChanged({
+        $sel = $sync.LangCombo.SelectedItem
+        if ($sel) { Invoke-FOMSwitchLanguage -LangCode $sel.Tag }
+    })
+}
+
+function Invoke-FOMSwitchLanguage {
+    param([string]$LangCode)
+
+    $sync.currentLang = $LangCode
+
+    $langData = $null
+    if ($LangCode -ne 'it') {
+        $f = "$($sync.PSScriptRoot)\config\lang\$LangCode.json"
+        if (Test-Path $f) {
+            try { $langData = Get-Content $f -Raw -Encoding UTF8 | ConvertFrom-Json } catch {}
+        }
+    }
+
+    $sync.configs.tweaks.PSObject.Properties | ForEach-Object {
+        $id    = $_.Name
+        $tweak = $_.Value
+
+        $ck = $sync["ck_$id"]
+        if ($ck) {
+            $ck.Content = if ($langData -and $langData.$id -and $langData.$id.Content) {
+                $langData.$id.Content
+            } else { $tweak.Content }
+        }
+
+        $tb = $sync["desc_$id"]
+        if ($tb) {
+            $tb.Text = if ($langData -and $langData.$id -and $langData.$id.Description) {
+                $langData.$id.Description
+            } else { $tweak.Description }
+        }
+    }
 }
 
 function Invoke-FOMSwitchTab {
