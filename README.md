@@ -1,4 +1,6 @@
 # ⚡ FiveM Performance Optimizer
+<img width="2553" height="1370" alt="image" src="https://github.com/user-attachments/assets/986a4be8-6578-4c5e-9d03-1d4caf9c64e9" />
+
 
 A modular Windows gaming optimizer built in PowerShell + WPF. Designed to eliminate CPU, RAM and disk spikes caused by background processes during FiveM / GTA V sessions. Data-driven: all tweaks live in `config/tweaks.json`, no hardcoded logic.
 
