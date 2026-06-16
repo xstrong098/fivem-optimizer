@@ -755,6 +755,18 @@
     ]
   },
 
+  "SistemaSvcHostRAM": {
+    "Content": "Raggruppa SvcHost per RAM installata",
+    "Description": "Imposta SvcHostSplitThresholdInKB in base alla RAM rilevata. Windows raggruppera piu servizi nello stesso svchost.exe invece di un processo per servizio, riducendo il numero totale di processi in background.",
+    "category": "Sistema", "Order": "d19", "Checked": true,
+    "InvokeScript": [
+      "$ramGB=[math]::Round((Get-CimInstance Win32_ComputerSystem -EA SilentlyContinue).TotalPhysicalMemory/1GB,0); $t=if($ramGB -le 2){2097152}elseif($ramGB -le 4){4194304}elseif($ramGB -le 6){6291456}elseif($ramGB -le 8){8388608}elseif($ramGB -le 12){12582912}elseif($ramGB -le 16){16777216}elseif($ramGB -le 24){25165824}elseif($ramGB -le 32){33554432}else{67108864}; Set-ItemProperty 'HKLM:\\SYSTEM\\CurrentControlSet\\Control' -Name 'SvcHostSplitThresholdInKB' -Value $t -Type DWord -EA SilentlyContinue; Write-FOMLog \"SvcHostSplitThresholdInKB=$t KB (RAM: $ramGB GB) - svchost raggruppato\" 'OK'"
+    ],
+    "UndoScript": [
+      "Remove-ItemProperty 'HKLM:\\SYSTEM\\CurrentControlSet\\Control' -Name 'SvcHostSplitThresholdInKB' -EA SilentlyContinue; Write-FOMLog 'SvcHostSplitThresholdInKB rimosso - ripristinato comportamento Windows predefinito' 'OK'"
+    ]
+  },
+
   "GamingScheduledTasks": {
     "Content": "Disabilita Task CEIP e Diagnostica",
     "Description": "Disabilita i task pianificati Windows che causano spike CPU/disco periodici: CompatTelRunner, Consolidator, DiskDiagnostic, QueueReporting, ProgramDataUpdater. Effetto immediato, nessun riavvio.",

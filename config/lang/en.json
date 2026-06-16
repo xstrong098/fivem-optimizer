@@ -160,5 +160,6 @@
   "StartupTeams":         { "Content": "Microsoft Teams: Disable Autostart",   "Description": "Removes Microsoft Teams from HKCU\\Run registry. Backup saved for UNDO." },
   "StartupRazer":         { "Content": "Razer Synapse: Disable Autostart",     "Description": "Removes Razer Synapse from HKCU\\Run and HKLM\\Run registry. Backup saved for UNDO." },
   "StartupLogitech":      { "Content": "Logitech G HUB: Disable Autostart",    "Description": "Removes Logitech G HUB from HKCU\\Run registry. Backup saved for UNDO." },
-  "StartupCorsair":       { "Content": "Corsair iCUE: Disable Autostart",      "Description": "Removes Corsair iCUE from HKCU\\Run registry. Backup saved for UNDO." }
+  "StartupCorsair":       { "Content": "Corsair iCUE: Disable Autostart",      "Description": "Removes Corsair iCUE from HKCU\\Run registry. Backup saved for UNDO." },
+  "SistemaSvcHostRAM":    { "Content": "Group SvcHost by RAM",                  "Description": "Sets SvcHostSplitThresholdInKB based on installed RAM. Windows groups multiple services into the same svchost.exe instead of one process per service, reducing total background process count." }
 }

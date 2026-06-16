@@ -160,5 +160,6 @@
   "StartupTeams":         { "Content": "Microsoft Teams: Desactivar inicio automático","Description": "Elimina Microsoft Teams de HKCU\\Run del registro. Copia de seguridad guardada para DESHACER." },
   "StartupRazer":         { "Content": "Razer Synapse: Desactivar inicio automático",  "Description": "Elimina Razer Synapse de HKCU\\Run y HKLM\\Run del registro. Copia de seguridad guardada para DESHACER." },
   "StartupLogitech":      { "Content": "Logitech G HUB: Desactivar inicio automático", "Description": "Elimina Logitech G HUB de HKCU\\Run del registro. Copia de seguridad guardada para DESHACER." },
-  "StartupCorsair":       { "Content": "Corsair iCUE: Desactivar inicio automático",   "Description": "Elimina Corsair iCUE de HKCU\\Run del registro. Copia de seguridad guardada para DESHACER." }
+  "StartupCorsair":       { "Content": "Corsair iCUE: Desactivar inicio automatico",   "Description": "Elimina Corsair iCUE de HKCU\\Run del registro. Copia de seguridad guardada para DESHACER." },
+  "SistemaSvcHostRAM":    { "Content": "Agrupar SvcHost por RAM",                    "Description": "Establece SvcHostSplitThresholdInKB segun la RAM instalada. Windows agrupa varios servicios en el mismo proceso svchost.exe en lugar de uno por servicio, reduciendo el numero total de procesos en segundo plano." }
 }

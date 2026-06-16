@@ -257,6 +257,10 @@ function Invoke-FOMScanHardware {
             Write-FOMLog "CPU AMD: aggiunte raccomandazioni C-States + Precision Boost" "INFO"
         }
 
+        # SvcHost RAM grouping - sempre consigliato
+        if (-not $rec.Contains('SistemaSvcHostRAM')) { $rec.Add('SistemaSvcHostRAM') }
+        Write-FOMLog "SvcHostSplitThresholdInKB: aggiunto (RAM $ramGB GB)" "INFO"
+
         # RAM < 16 GB → seleziona tutti i Kill sicuri
         if ($lowRam) {
             $sync.configs.tweaks.PSObject.Properties |
