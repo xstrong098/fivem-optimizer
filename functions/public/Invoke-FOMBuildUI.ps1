@@ -115,8 +115,8 @@ function Invoke-FOMBuildUI {
     }
 
     $sync.LangCombo.Add_SelectionChanged({
-        $sel = $sync.LangCombo.SelectedItem
-        if ($sel) { Invoke-FOMSwitchLanguage -LangCode $sel.Tag }
+        $item = $sync.LangCombo.SelectedItem
+        if ($item -and $item.Tag) { Invoke-FOMSwitchLanguage -LangCode ([string]$item.Tag) }
     })
 }
 
@@ -125,6 +125,7 @@ function Invoke-FOMSwitchLanguage {
 
     $sync.currentLang = $LangCode
 
+    # Carica il file lingua (null per italiano = testo base da tweaksBase)
     $langData = $null
     if ($LangCode -ne 'it') {
         $f = "$($sync.PSScriptRoot)\config\lang\$LangCode.json"
@@ -134,21 +135,21 @@ function Invoke-FOMSwitchLanguage {
     }
 
     $sync.configs.tweaks.PSObject.Properties | ForEach-Object {
-        $id    = $_.Name
-        $tweak = $_.Value
+        $id   = $_.Name
+        $base = $sync.configs.tweaksBase.$id   # testo originale italiano sempre disponibile
 
         $ck = $sync["ck_$id"]
         if ($ck) {
             $ck.Content = if ($langData -and $langData.$id -and $langData.$id.Content) {
                 $langData.$id.Content
-            } else { $tweak.Content }
+            } elseif ($base) { $base.Content } else { $_.Value.Content }
         }
 
         $tb = $sync["desc_$id"]
         if ($tb) {
             $tb.Text = if ($langData -and $langData.$id -and $langData.$id.Description) {
                 $langData.$id.Description
-            } else { $tweak.Description }
+            } elseif ($base) { $base.Description } else { $_.Value.Description }
         }
     }
 }

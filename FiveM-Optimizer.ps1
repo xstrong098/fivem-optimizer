@@ -29,6 +29,8 @@ try {
         "Errore", "OK", "Error") | Out-Null
     exit 1
 }
+# Copia originale italiano PRIMA dell'overlay (serve per switching lingua verso IT)
+$sync.configs.tweaksBase = Get-Content "$PSScriptRoot\config\tweaks.json" -Raw -Encoding UTF8 | ConvertFrom-Json
 
 # ── Localizzazione (lang overlay) ────────────────────────────
 # Baseline = italiano (tweaks.json). Per altre lingue carica config\lang\<codice>.json.
