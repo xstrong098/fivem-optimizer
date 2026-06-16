@@ -128,6 +128,56 @@ What it blocks:
 
 ---
 
+## Nvidia Profile Inspector
+
+The **Power & Tools** tab contains two Nvidia-specific tweaks that work together to apply a custom low-latency GPU profile for FiveM / GTA V.
+
+### What is Nvidia Profile Inspector?
+
+[Nvidia Profile Inspector (NPI)](https://github.com/Orbmu2k/nvidiaProfileInspector) is a third-party tool that exposes hidden driver-level settings not available in the standard Nvidia Control Panel. It lets you create and apply per-game profiles with advanced parameters.
+
+### The .nip profile file
+
+The optimizer ships with a pre-configured profile at `config\profile.nip`. This file contains the following settings optimized for FiveM:
+
+| Setting | Value | Effect |
+|---------|-------|--------|
+| VSync | Off | Eliminates forced frame sync from driver level |
+| Adaptive Tear Control | On | Alternative to VSync — avoids tearing without input lag penalty |
+| Max Pre-Rendered Frames | 1 | Reduces GPU queue depth → lower input lag |
+| Power Management Mode | Max Performance | Forces GPU to stay at max clock, no throttling |
+| Threaded Optimization | On | Distributes DX draw calls across CPU threads |
+| FXAA | Off | Disables driver-level anti-aliasing injection |
+| Triple Buffering | Off | Reduces frame latency in windowed/borderless mode |
+| Preferred Refresh Rate | Highest Available | Forces max refresh rate in DX games |
+| FRL Low Latency | On | Frame Rate Limiter low-latency mode |
+
+### How to use
+
+**Step 1 — Export the profile copy to Desktop**
+
+In the **Power & Tools** tab, check and run:
+> **Export Nvidia Inspector Profile (Custom)**
+
+This copies `config\profile.nip` to your Desktop so you can find it easily. The original file in `config\` is never modified.
+
+**Step 2 — Install and launch NPI with the profile loaded**
+
+Check and run:
+> **Install and Launch NV Inspector + Profile**
+
+This will:
+1. Download `nvidiaProfileInspector.exe` from GitHub into `tools\nvidiaProfileInspector\` (only on first use — internet required)
+2. Launch NPI with the `.nip` profile already loaded
+
+**Step 3 — Import in NPI**
+
+When NPI opens with the profile loaded, click **Import** (top toolbar) if the profile is not already active, then click **Apply changes** (top right).
+
+> **Note:** The profile targets FiveM and GTA V executables. If you use a different exe name, you can duplicate the profile inside NPI and rename it.
+
+---
+
 ## Build EXE (optional)
 
 To compile standalone `.exe` files (requires internet on first run to install `ps2exe`):
